@@ -198,8 +198,8 @@ function generateChart(data, type) {
           label: nomeGrafico + " (Asse Y 1)",
           data: values,
           //backgroundColor: "rgba(75, 192, 192, 0.2)",
-          backgroundColor: colore,
-          borderColor: colore,
+          backgroundColor: colore.value,
+          borderColor: colore.value,
           borderWidth: 1,
           yAxisID: "y", // Asocia este dataset al eje 'y' principal
         },
@@ -207,8 +207,8 @@ function generateChart(data, type) {
           label: nomeGrafico + " (Asse Y 2)",
           data: values2,
           //backgroundColor: "rgba(75, 192, 192, 0.2)",
-          backgroundColor: colore2,
-          borderColor: colore2,
+          backgroundColor: colore2.value,
+          borderColor: colore2.value,
           borderWidth: 1,
           yAxisID: "y2", // Asocia este dataset al eje 'y1' secundario
         },
