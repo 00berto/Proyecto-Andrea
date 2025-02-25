@@ -192,10 +192,11 @@ function generateChart(data, type) {
   chartInstance = new Chart(ctx, {
     type: type,
     data: {
+      title: nomeGrafico,
       labels: labels,
       datasets: [
         {
-          label: nomeGrafico + " (Asse Y 1)",
+          label: yAxis + " (Asse Y 1)",
           data: values,
           //backgroundColor: "rgba(75, 192, 192, 0.2)",
           backgroundColor: colore.value,
@@ -204,7 +205,7 @@ function generateChart(data, type) {
           yAxisID: "y", // Asocia este dataset al eje 'y' principal
         },
         {
-          label: nomeGrafico + " (Asse Y 2)",
+          label: yAxis2 + " (Asse Y 2)",
           data: values2,
           //backgroundColor: "rgba(75, 192, 192, 0.2)",
           backgroundColor: colore2.value,
