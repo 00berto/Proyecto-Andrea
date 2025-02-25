@@ -192,7 +192,6 @@ function generateChart(data, type) {
   chartInstance = new Chart(ctx, {
     type: type,
     data: {
-      title: nomeGrafico,
       labels: labels,
       datasets: [
         {
@@ -218,6 +217,22 @@ function generateChart(data, type) {
     options: {
       maintainAspectRatio: false,
       responsive: true,
+      plugins: {
+        // Añade esta sección para el título general
+        title: {
+          display: true, // Habilita el título
+          text: nomeGrafico,
+          position: "top",
+          font: {
+            size: 16,
+            weight: "bold",
+          },
+          padding: {
+            top: 10,
+            bottom: 10,
+          },
+        },
+      },
       scales: {
         y: {
           beginAtZero: true,
