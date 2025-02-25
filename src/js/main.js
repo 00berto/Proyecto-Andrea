@@ -193,17 +193,19 @@ function generateChart(data, type) {
       labels: labels,
       datasets: [
         {
-          label: nomeGrafico,
+          label: nomeGrafico + " (Asse Y 1)",
           data: values,
-          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          //backgroundColor: "rgba(75, 192, 192, 0.2)",
+          backgroundColor: colore,
           borderColor: colore,
           borderWidth: 1,
           yAxisID: "y", // Asocia este dataset al eje 'y' principal
         },
         {
-          label: nomeGrafico + " (Eje 2)",
+          label: nomeGrafico + " (Asse Y 2)",
           data: values2,
-          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          //backgroundColor: "rgba(75, 192, 192, 0.2)",
+          backgroundColor: colore2,
           borderColor: colore2,
           borderWidth: 1,
           yAxisID: "y2", // Asocia este dataset al eje 'y1' secundario
@@ -217,7 +219,7 @@ function generateChart(data, type) {
         y: {
           beginAtZero: true,
           title: {
-            // Añade títulos a los ejes para mayor claridad
+            // Añade títulos a los ejes
             display: true,
             text: yAxis, // Usa el valor seleccionado en AsseY1
           },
@@ -247,50 +249,6 @@ function generateChart(data, type) {
   });
 }
 
-/*function generateChart(data, type) {
-  const xAxis = AsseX1.value;
-  const yAxis = AsseY1.value;
-  const yAxis2 = AsseY2.value;
-  const labels = data.map((item) => item[xAxis]);
-  const values = data.map((item) => item[yAxis]);
-  const values2 = data.map((item) => item[yAxis2]);
-
-  const nomeGrafico = document.getElementById("nomeGrafico").value;
-
-  const ctx = document.getElementById("myChart").getContext("2d");
-  ctx.canvas.width = 600;
-  ctx.canvas.height = 300;
-
-  if (chartInstance) {
-    chartInstance.destroy(); // Destruir el gráfico existente
-  }
-
-  chartInstance = new Chart(ctx, {
-    type: type,
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: nomeGrafico,
-          data: values,
-          backgroundColor: "rgba(75, 192, 192, 0.2)",
-          borderColor: colore,
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      maintainAspectRatio: false,
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
-}
-*/
 colore.addEventListener("change", UpdateColor);
 colore2.addEventListener("change", UpdateColor);
 
