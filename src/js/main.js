@@ -152,18 +152,20 @@ function displayData(data) {
 }
 
 // Función cambio color
-const colore = document.getElementById("colore").value;
-const colore2 = document.getElementById("colore2").value;
+const colore = document.getElementById("colore");
+const colore2 = document.getElementById("colore2");
 
 let chartInstance; // almacen del grafico
 
 function UpdateColor() {
-  const UpColore = colore;
-  const UpColore2 = colore2;
+  const UpColore = colore.value;
+  const UpColore2 = colore2.value;
 
   if (chartInstance) {
+    chartInstance.data.datasets[0].backgroundColor = UpColore;
     chartInstance.data.datasets[0].borderColor = UpColore;
-    chartInstance.data.datasets[0].borderColor = UpColore2;
+    chartInstance.data.datasets[1].backgroundColor = UpColore2;
+    chartInstance.data.datasets[1].borderColor = UpColore2;
     chartInstance.update();
   }
 }
@@ -196,8 +198,8 @@ function generateChart(data, type) {
           label: nomeGrafico + " (Asse Y 1)",
           data: values,
           //backgroundColor: "rgba(75, 192, 192, 0.2)",
-          backgroundColor: colore,
-          borderColor: colore,
+          backgroundColor: colore.value,
+          borderColor: colore.value,
           borderWidth: 1,
           yAxisID: "y", // Asocia este dataset al eje 'y' principal
         },
