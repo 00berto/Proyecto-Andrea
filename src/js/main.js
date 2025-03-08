@@ -1,5 +1,7 @@
 // Import CSS
 import "../scss/styles.scss";
+import "../scss/styles.css";
+
 const invio = document.getElementById("creaGraf");
 const visual = document.getElementById("cargaFile");
 const archivoXLSL = document.getElementById("file1");
