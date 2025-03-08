@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AN Project</title>
     <!--Bootstrap-->
-    <link href="scss/styles.scss" rel="stylesheet">
+    <!--<link href="scss/styles.sass" rel="stylesheet">-->
+    <link href="scss/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -21,7 +22,7 @@
 
 <body>
     <!--titulo-->
-    <div class="container py-4">
+    <div class="container mx-auto">
         <div class="container px-3 mx-auto mb-3">
             <div class="row mx-auto d-flex justify-content-center align-items-center">
                 <h1 class="col-8 display-2 display-md-4"><kbd>AN PROJECT</kbd></h1>
@@ -30,88 +31,60 @@
         </div>
 
 
-
-        <!--container carga y selezione del foglio-->
-        <div class="container-fluid">
-            <div class="row mx-auto d-flex align-items-end justify-content-between">
-                <div class="col-12 col-md-6 col-lg-4 mb-3">
-                    <label class="form-label" for="formFileLg xmlfile1">Carica il file</label>
-                    <input class="form-control form-control-lg" type="file" name="formFile" id="file1"
-                        accept=".xlsx, .xls">
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 mb-3 selector">
-                    <label class="form-label" for="form-text">Seleciona il foglio di lavoro</label>
-                    <select id="selectHoja" class="form-select form-select-lg"></select>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 mb-3">
-                    <button type="button" class="btn btn-outline-dark btn-lg w-100" id="cargaFile">Visualizza il
-                        contenuto</button>
-                </div>
-            </div>
-        </div>
-
-        <div class=" progress mt-4 mx-4">
-            <div class="progress-bar bg-dark" id="progressBar" role="progressbar" style="width: 0%" aria-valuenow="0"
-                aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-
-        <div class="container mt-4 mb-3">
-            <div class="card">
-                <div class="card-header bg-dark text-white">
-                    Dati caricati
-                </div>
-                <div class="card-body">
-                    <pre id="output" class="bg-light p-3 rounded" style="max-height: 400px; overflow-y: auto;"></pre>
-                </div>
-            </div>
-        </div>
-
-
-        <!--container generare grafico-->
-
         <form action="">
-            <div class="container-fluid">
+            <div class="container-fluid bg-success-light py-3">
+
+                <!--container carga y selezione del foglio-->
+                <div class="row mx-auto d-flex align-items-end justify-content-between">
+                    <div class="col-12 col-md-6 col-lg-4 mb-3">
+                        <label class="form-label" for="formFileLg xmlfile1">Carica il file</label>
+                        <input class="form-control form-control-lg" type="file" name="formFile" id="file1"
+                            accept=".xlsx, .xls">
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4 mb-3 selector">
+                        <label class="form-label" for="form-text">Seleciona il foglio di lavoro</label>
+                        <select id="selectHoja" class="form-select form-select-lg"></select>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4 mb-3">
+                        <button type="button" class="btn btn-dark btn-lg w-100" id="cargaFile">Visualizza il
+                            contenuto</button>
+                    </div>
+                </div>
+
+                <div class=" progress mt-4 mx-4">
+                    <div class="progress-bar bg-dark" id="progressBar" role="progressbar" style="width: 0%"
+                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <div class="container mt-4 mb-3">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white">
+                            Dati caricati
+                        </div>
+                        <div class="card-body">
+                            <pre id="output" class="bg-light p-3 rounded"
+                                style="max-height: 400px; overflow-y: auto;"></pre>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--container generare grafico-->
+
 
                 <!--ejes-->
                 <div class="row mx-auto d-flex align-items-end justify-content-between">
 
                     <div class="col-12 col-md-6 col-lg-4 mb-3 selectorX">
-                        <label class="form-label" for="form-text">Asse X</label>
+                        <label class="form-label" for="form-text">Asse X (1)</label>
                         <select id="asseX1" class="form-select form-select-lg"></select>
                     </div>
 
                     <div class="col-12 col-md-6 col-lg-4 mb-3 selectorY">
                         <label class="form-label" for="form-text">Asse Y (1)</label>
                         <select id="asseY1" class="form-select form-select-lg"></select>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-4 mb-3 selectorY">
-                        <label class="form-label" for="form-text">Asse Y (2)</label>
-                        <select id="asseY2" class="form-select form-select-lg"></select>
-                    </div>
-                </div>
-
-                <!--aspetto-->
-                <class class="row mx-auto d-flex align-items-end justify-content-between">
-
-
-                    <div class="col-12 col-md-6 col-lg-4 mb-3">
-                        <label class="form-label" for="form-text">Tipo di Grafico</label>
-                        <select id="chartType" class="form-select form-select-lg">
-                            <option value="scatter">Dispersione</option>
-                            <option value="line">Linee</option>
-                            <option value="bar">Barre</option>
-                            <option value="column">Colonne</option>
-                            <option value="pie">Circolare</option>
-                            <option value="area">Area</option>
-                            <option value="bubble">Bolle</option>
-                            <option value="doughnut">Anello</option>
-                            <option value="radar">Radar</option>
-                            <option value="polarArea">Area Polare</option>
-                        </select>
-
                     </div>
 
                     <div class="col-12 col-md-6 col-lg-4 mb-3">
@@ -128,6 +101,69 @@
                         </select>
                     </div>
 
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="container-fluid bg-warning-light py-3">
+
+                <!--tabla-->
+                <table class="table table-sm caption-top table-striped table-bordered table-hover table-responsive"
+                    id="tableXY2">
+                    <caption>Dati Secondo Asse</caption>
+                    <thead class="text-center">
+                        <tr class="table-dark">
+                            <th scope="col">VALORI POMPA DI CALORE</th>
+                            <th scope="col">__EMPTY</th>
+                            <th scope="col">__EMPTY_1</th>
+                            <th scope="col">__EMPTY_2</th>
+                            <th scope="col">__EMPTY_3</th>
+                            <th scope="col"></th>
+                        </tr>
+                        <tr>
+                            <th scope="col">T. est. [°C]</th>
+                            <th scope="col">COP</th>
+                            <th scope="col">T. man [°C]</th>
+                            <th scope="col">Pot. Max [W]</th>
+                            <th scope="col">Pot. Min [W]</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <tr>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">❌</button></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">❌</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-success mb-3" onclick="agregarFila()">➕ Aggiungi Fila</button>
+
+                <!--ajes 2-->
+                <div class="row mx-auto d-flex align-items-end justify-content-between">
+
+                    <div class="col-12 col-md-6 col-lg-4 mb-3 selectorX">
+                        <label class="form-label" for="form-text">Asse X (2)</label>
+                        <select id="asseX2" class="form-select form-select-lg"></select>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4 mb-3 selectorY">
+                        <label class="form-label" for="form-text">Asse Y (2)</label>
+                        <select id="asseY2" class="form-select form-select-lg"></select>
+                    </div>
+
                     <div class="col-12 col-md-6 col-lg-4 mb-3">
                         <label class="form-label" for="form-text">Colore Asse Y2</label>
                         <select id="colore2" class="form-select form-select-lg">
@@ -141,39 +177,65 @@
                             <option value="purple">Viola</option>
                         </select>
                     </div>
-                </class>
-                <div class="mx-auto col-5 mb-3">
-                    <input class="col-12  form-control form-control-lg" type="text" id="nomeGrafico"
-                        placeholder="Nome del Grafico">
-                </div>
-
-            </div>
-
-            <div class="row mt-4 mx-auto d-flex">
-                <div class="col-12 col-md-6 col-lg-6 mb-3">
-                    <button type="button" class="btn btn-outline-dark btn-lg w-100" id="creaGraf">Crea
-                        Grafico</button>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-6 mb-3">
-                    <button type="button" class="btn btn-outline-dark btn-lg w-100" id="download">Scarica
-                        Grafico</button>
                 </div>
             </div>
 
-            <div class="container mt-4">
-                <div class="card">
-                    <div class="card-header bg-dark text-white">
-                        Grafico
+            <hr>
+
+            <div class="container-fluid bg-info-light py-3">
+                <!--aspetto-->
+                <class class="row mx-auto d-flex align-items-end justify-content-between">
+
+                    <div class="col-12 col-md-6 col-lg-4 mb-3">
+                        <label class="form-label" for="form-text">Tipo di Grafico</label>
+                        <select id="chartType" class="form-select form-select-lg">
+                            <option value="scatter">Dispersione</option>
+                            <option value="line">Linee</option>
+                            <option value="bar">Barre</option>
+                            <option value="column">Colonne</option>
+                            <option value="pie">Circolare</option>
+                            <option value="area">Area</option>
+                            <option value="bubble">Bolle</option>
+                            <option value="doughnut">Anello</option>
+                            <option value="radar">Radar</option>
+                            <option value="polarArea">Area Polare</option>
+                        </select>
                     </div>
-                    <div class="card-body">
-                        <div class="chart-container" style="position: relative; height:auto; width:100%;">
-                            <canvas id="myChart"></canvas>
+
+                    <div class="mx-auto col-5 mb-3">
+                        <input class="col-12  form-control form-control-lg" type="text" id="nomeGrafico"
+                            placeholder="Nome del Grafico">
+                    </div>
+
+                </class>
+
+                <div class="row mt-4 mx-auto d-flex">
+                    <div class="col-12 col-md-6 col-lg-6 mb-3">
+                        <button type="button" class="btn btn-dark btn-lg w-100" id="creaGraf">Crea
+                            Grafico</button>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-6 mb-3">
+                        <button type="button" class="btn btn-dark btn-lg w-100" id="download">Scarica
+                            Grafico</button>
+                    </div>
+                </div>
+
+                <div class="container mt-4">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white">
+                            Grafico
+                        </div>
+
+                        <div class="card-body">
+                            <div class="chart-container" style="position: relative; height:auto; width:100%;">
+                                <canvas id="myChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </form>
     </div>
 
@@ -189,6 +251,7 @@
 
     <!--JS-->
     <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/tabla.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

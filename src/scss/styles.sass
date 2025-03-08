@@ -4,8 +4,10 @@ $theme-colors: (
   "primary": #007bff,
   "secondary": #6c757d,
   "success": #198754,
+  "success-light": rgba($success, 0.5),
   "danger": #dc3545,
   "warning": #ffc107,
+  "warning-light": rgba($warning, 0.5),
   "info": #0d6efd,
   "light": #f8f9fa,
   "dark": #212529,
@@ -13,6 +15,14 @@ $theme-colors: (
 
 body {
   font-family: "Lato", sans-serif;
+}
+
+.bg-success-light {
+  background-color: rgba($success, 0.5);
+}
+
+.bg-warning-light {
+  background-color: rgba($warning, 0.5);
 }
 
 button,
