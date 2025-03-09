@@ -221,6 +221,9 @@ function obtenerDatos() {
   return datos;
 }
 
+const btnAddFila = document.getElementById("btn-add-fila");
+btnAddFila.addEventListener("click", agregarFila);
+
 window.onload = function () {
   let columnas = [
     "T. est. [°C]",
