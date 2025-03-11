@@ -8,10 +8,10 @@ const archivoXLSL = document.getElementById("file1");
 const progressBar = document.getElementById("progressBar");
 const selectHoja = document.getElementById("selectHoja");
 const AsseX1 = document.getElementById("asseX1");
-//const AsseX2 = document.getElementById("asseX2");
+const AsseX2 = document.getElementById("asseX2");
 const AsseY1 = document.getElementById("asseY1");
-//const AsseY2 = document.getElementById("asseY2");
-//const chartType = document.getElementById("chartType").value;
+const AsseY2 = document.getElementById("asseY2");
+const chartType = document.getElementById("chartType").value;
 const download = document.getElementById("download");
 
 archivoXLSL.addEventListener("change", () => {
@@ -84,14 +84,14 @@ archivoXLSL.addEventListener("change", function (event) {
         AsseX1.appendChild(option);
       });
 
-      /*AsseX2.innerHTML = "";
+      AsseX2.innerHTML = "";
       headers.forEach((header) => {
         const option = document.createElement("option");
         option.classList.add("px-1");
         option.value = header;
         option.textContent = header;
         AsseX2.appendChild(option);
-      });*/
+      });
 
       AsseY1.innerHTML = "";
       headers.forEach((header) => {
@@ -102,14 +102,14 @@ archivoXLSL.addEventListener("change", function (event) {
         AsseY1.appendChild(option);
       });
 
-      /*AsseY2.innerHTML = "";
+      AsseY2.innerHTML = "";
       headers.forEach((header) => {
         const option = document.createElement("option");
         option.classList.add("px-1");
         option.value = header;
         option.textContent = header;
         AsseY2.appendChild(option);
-      });*/
+      });
     });
 
     invio.addEventListener("click", function () {
@@ -218,8 +218,8 @@ function eliminarFila(boton) {
 }
 
 // Variables asse X Y a nivel global
-let AsseX2 = [];
-let AsseY2 = [];
+//let AsseX2 = [];
+//let AsseY2 = [];
 
 function obtenerDatos() {
   let tabla = document.getElementById("tableXY2");
@@ -287,11 +287,11 @@ const actualizarAsseXY = function (event) {
   console.log("Columna Y seleccionada:", y);
 
   let datos = obtenerDatos();
-  AsseX2 = datos.map((fila) => fila[x]);
-  AsseY2 = datos.map((fila) => fila[y]);
+  valoresX = datos.map((fila) => fila[x]);
+  valoresY = datos.map((fila) => fila[y]);
 
-  console.log("AsseX2:", AsseX2);
-  console.log("AsseY2:", AsseY2);
+  console.log("AsseX2:", valoresX);
+  console.log("AsseY2:", valoresY);
 };
 
 document.addEventListener("actualizarSeleccion", function (event) {
@@ -319,7 +319,8 @@ function UpdateColor() {
 }
 
 // Función para generar el gráfico
-function generateChart(data, type) {
+
+/*function generateChart(data, type) {
   const xAxis = AsseX1.value;
   const xAxis2 = AsseX2.value;
   const yAxis = AsseY1.value;
@@ -359,7 +360,8 @@ function generateChart(data, type) {
 
         {
           label: yAxis2 + " (Asse Y 2)",
-          data: values2,
+          //data: values2,
+          data: AsseY2,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
           backgroundColor: colore2.value + "80",
           borderColor: colore2.value,
@@ -430,6 +432,104 @@ function generateChart(data, type) {
           title: {
             display: true,
             text: xAxis2, // Usa el valor seleccionado en AsseX2
+          },
+        },
+      },
+    },
+  });
+}*/
+
+function generateChart(data, type) {
+  const xAxis = AsseX1.value;
+  const xAxis2 = AsseX2.value; // Obtener el valor del eje X secundario
+  const yAxis = AsseY1.value;
+  const yAxis2 = AsseY2.value;
+
+  const labels = data.map((item) => item[xAxis]);
+  const labels2 = data.map((item) => item[xAxis2]); // Obtener los labels del eje X secundario
+  const values = data.map((item) => item[yAxis]);
+  const values2 = data.map((item) => item[yAxis2]);
+
+  const nomeGrafico = document.getElementById("nomeGrafico").value;
+
+  const ctx = document.getElementById("myChart").getContext("2d");
+  ctx.canvas.width = 600;
+  ctx.canvas.height = 300;
+
+  if (chartInstance) {
+    chartInstance.destroy();
+  }
+
+  chartInstance = new Chart(ctx, {
+    type: type,
+    data: {
+      labels: labels, // Usar los labels del eje X primario
+      datasets: [
+        {
+          label: yAxis + " (Asse Y 1)",
+          data: values,
+          backgroundColor: colore.value + "80",
+          borderColor: colore.value,
+          borderWidth: 2,
+          fill: false,
+          yAxisID: "y",
+        },
+        {
+          label: yAxis2 + " (Asse Y 2)",
+          data: values2, // Usar los valores del eje Y secundario
+          backgroundColor: colore2.value + "80",
+          borderColor: colore2.value,
+          borderWidth: 2,
+          fill: false,
+          yAxisID: "y1",
+        },
+      ],
+    },
+    options: {
+      maintainAspectRatio: false,
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: nomeGrafico,
+          position: "top",
+          font: {
+            size: 16,
+            weight: "bold",
+          },
+          padding: {
+            top: 10,
+            bottom: 10,
+          },
+        },
+      },
+      scales: {
+        y: {
+          type: "linear",
+          position: "left",
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: yAxis,
+          },
+        },
+        y1: {
+          type: "linear",
+          position: "right",
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: yAxis2,
+          },
+          grid: {
+            drawOnChartArea: false,
+          },
+        },
+        x: {
+          // Usar el eje X primario para ambos datasets
+          title: {
+            display: true,
+            text: xAxis,
           },
         },
       },
