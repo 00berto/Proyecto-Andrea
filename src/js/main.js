@@ -325,7 +325,7 @@ function generateChart(data, type) {
   const yAxis = AsseY1.value;
   const yAxis2 = AsseY2.value;
 
-  //const labels = data.map((item) => item[xAxis]);
+  const labels = data.map((item) => item[xAxis]);
   //const labels2 = data.map((item) => item[xAxis2]);
   const values = data.map((item) => item[yAxis]);
   const values2 = data.map((item) => item[yAxis2]);
