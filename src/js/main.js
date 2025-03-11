@@ -84,14 +84,14 @@ archivoXLSL.addEventListener("change", function (event) {
         AsseX1.appendChild(option);
       });
 
-      AsseX2.innerHTML = "";
+      /*AsseX2.innerHTML = "";
       headers.forEach((header) => {
         const option = document.createElement("option");
         option.classList.add("px-1");
         option.value = header;
         option.textContent = header;
         AsseX2.appendChild(option);
-      });
+      });*/
 
       AsseY1.innerHTML = "";
       headers.forEach((header) => {
@@ -102,14 +102,14 @@ archivoXLSL.addEventListener("change", function (event) {
         AsseY1.appendChild(option);
       });
 
-      AsseY2.innerHTML = "";
+      /*AsseY2.innerHTML = "";
       headers.forEach((header) => {
         const option = document.createElement("option");
         option.classList.add("px-1");
         option.value = header;
         option.textContent = header;
         AsseY2.appendChild(option);
-      });
+      });*/
     });
 
     invio.addEventListener("click", function () {
@@ -441,9 +441,11 @@ function UpdateColor() {
 
 function generateChart(data, type) {
   const xAxis = AsseX1.value;
-  const xAxis2 = AsseX2.value; // Obtener el valor del eje X secundario
+  //const xAxis2 = AsseX2.value; // Obtener el valor del eje X secundario
+  const xAxis2 = selectX.value;
   const yAxis = AsseY1.value;
-  const yAxis2 = AsseY2.value;
+  //const yAxis2 = AsseY2.value;
+  const yAxis2 = selectY.value;
 
   const labels = data.map((item) => item[xAxis]);
   const labels2 = data.map((item) => item[xAxis2]); // Obtener los labels del eje X secundario
