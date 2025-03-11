@@ -188,7 +188,6 @@ function agregarFila() {
   // Crear las celdas con inputs
   for (let i = 0; i < 5; i++) {
     let celda = document.createElement("td");
-    s;
     let input = document.createElement("input");
     input.type = "text";
     input.className = "form-control";
@@ -199,7 +198,7 @@ function agregarFila() {
   // Celda de botón eliminar
   let celdaAccion = document.createElement("td");
   let botonEliminar = document.createElement("button");
-  botonEliminar.className = "btn btn-danger btn-sm";
+  botonEliminar.className = "btn btn-danger btn-sm btn-remove-fila";
   botonEliminar.innerText = "❌";
   botonEliminar.onclick = function () {
     eliminarFila(this);
