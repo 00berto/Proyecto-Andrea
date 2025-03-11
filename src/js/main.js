@@ -343,12 +343,12 @@ function generateChart(data, type) {
   chartInstance = new Chart(ctx, {
     type: type,
     data: {
-      //labels: labels,
+      labels: labels,
       datasets: [
         {
           label: yAxis + " (Asse Y 1)",
           data: values,
-          //backgroundColor: "rgba(75, 192, 192, 0.2)",
+          //backgroundColor: "rgba(75, 192, 192, 0.5)",
           backgroundColor: colore.value + "80",
           borderColor: colore.value,
           borderWidth: 2,
@@ -360,13 +360,13 @@ function generateChart(data, type) {
         {
           label: yAxis2 + " (Asse Y 2)",
           data: values2,
-          //backgroundColor: "rgba(75, 192, 192, 0.2)",
+          //backgroundColor: "rgba(75, 192, 192, 0.5)",
           backgroundColor: colore2.value + "80",
           borderColor: colore2.value,
           borderWidth: 2,
           fill: false,
-          xAxisID: "x2", // Asocia este dataset al eje 'x1' secundario
-          yAxisID: "y2", // Asocia este dataset al eje 'y1' secundario
+          xAxisID: "x1", // Asocia este dataset al eje 'x1' secundario
+          yAxisID: "y1", // Asocia este dataset al eje 'y1' secundario
         },
       ],
     },
