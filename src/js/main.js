@@ -11,7 +11,7 @@ const AsseX1 = document.getElementById("asseX1");
 //const AsseX2 = document.getElementById("asseX2");
 const AsseY1 = document.getElementById("asseY1");
 //const AsseY2 = document.getElementById("asseY2");
-const chartType = document.getElementById("chartType").value;
+//const chartType = document.getElementById("chartType").value;
 const download = document.getElementById("download");
 
 archivoXLSL.addEventListener("change", () => {
@@ -165,6 +165,20 @@ function displayData(data) {
 
 // Funciónes de la tabla
 
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("btn-add-fila")
+    .addEventListener("click", agregarFila);
+
+  // Añadir event listeners a los botones de eliminar ya existentes.
+  let botonesEliminar = document.querySelectorAll(".btn-remove-fila");
+  botonesEliminar.forEach(function (boton) {
+    boton.addEventListener("click", function () {
+      eliminarFila(this);
+    });
+  });
+});
+
 function agregarFila() {
   let tabla = document
     .getElementById("tableXY2")
@@ -174,6 +188,7 @@ function agregarFila() {
   // Crear las celdas con inputs
   for (let i = 0; i < 5; i++) {
     let celda = document.createElement("td");
+    s;
     let input = document.createElement("input");
     input.type = "text";
     input.className = "form-control";
