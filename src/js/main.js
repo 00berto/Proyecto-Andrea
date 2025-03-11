@@ -198,8 +198,12 @@ function agregarFila() {
 
 function eliminarFila(boton) {
   let fila = boton.parentNode.parentNode;
-  fila.parentNode.removeChild(fila);
+  fila.remove();
 }
+
+// Variables asse X Y a nivel global
+let AsseX2 = [];
+let AsseY2 = [];
 
 function obtenerDatos() {
   let tabla = document.getElementById("tableXY2");
@@ -212,7 +216,8 @@ function obtenerDatos() {
     for (let j = 0; j < fila.cells.length - 1; j++) {
       let input = fila.cells[j].querySelector("input");
       if (input) {
-        filaDatos.push(parseFloat(input.value) || 0);
+        let valor = input.value.trim() !== "" ? parseFloat(input.value) : null;
+        filaDatos.push(valor);
       }
     }
     datos.push(filaDatos);
@@ -242,6 +247,7 @@ window.onload = function () {
 
   selectX.selectedIndex = 0; // Por defecto, T. est. [°C]
   selectY.selectedIndex = 1; // Por defecto, COP
+
   function dispatchUpdateEvent() {
     let event = new CustomEvent("actualizarSeleccion", {
       detail: {
@@ -258,9 +264,6 @@ window.onload = function () {
 
 // Funcion para obtener los datos de la tabla
 
-let AsseX2 = [];
-let AsseY2 = [];
-
 const actualizarAsseXY = function (event) {
   let { x, y } = event.detail;
 
@@ -271,10 +274,14 @@ const actualizarAsseXY = function (event) {
   AsseX2 = datos.map((fila) => fila[x]);
   AsseY2 = datos.map((fila) => fila[y]);
 
-  actualizarGrafico(AsseX2, AsseY2);
+  console.log("AsseX2:", AsseX2);
+  console.log("AsseY2:", AsseY2);
 };
 
-document.addEventListener("actualizarSeleccion", actualizarAsseXY);
+document.addEventListener("actualizarSeleccion", function (event) {
+  let { x, y } = event.detail;
+  actualizarAsseXY(x, y);
+});
 
 // Función cambio color
 const colore = document.getElementById("colore");
@@ -302,8 +309,8 @@ function generateChart(data, type) {
   const yAxis = AsseY1.value;
   const yAxis2 = AsseY2.value;
 
-  const labels = data.map((item) => item[xAxis]);
-  const labels2 = data.map((item) => item[xAxis2]);
+  //const labels = data.map((item) => item[xAxis]);
+  //const labels2 = data.map((item) => item[xAxis2]);
   const values = data.map((item) => item[yAxis]);
   const values2 = data.map((item) => item[yAxis2]);
 
@@ -320,7 +327,7 @@ function generateChart(data, type) {
   chartInstance = new Chart(ctx, {
     type: type,
     data: {
-      labels: labels,
+      //labels: labels,
       datasets: [
         {
           label: yAxis + " (Asse Y 1)",

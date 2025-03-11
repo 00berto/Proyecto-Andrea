@@ -109,78 +109,79 @@
             <div class="container-fluid bg-warning-light py-3">
 
                 <!--tabla-->
-                <table class="table table-sm caption-top table-striped table-bordered table-hover table-responsive"
-                    id="tableXY2">
-                    <caption>Dati Secondo Asse</caption>
-                    <thead class="text-center">
-                        <tr class="table-dark">
-                            <th scope="col">VALORI POMPA DI CALORE</th>
-                            <th scope="col">__EMPTY</th>
-                            <th scope="col">__EMPTY_1</th>
-                            <th scope="col">__EMPTY_2</th>
-                            <th scope="col">__EMPTY_3</th>
-                            <th scope="col"></th>
-                        </tr>
-                        <tr>
-                            <th scope="col">T. est. [°C]</th>
-                            <th scope="col">COP</th>
-                            <th scope="col">T. man [°C]</th>
-                            <th scope="col">Pot. Max [W]</th>
-                            <th scope="col">Pot. Min [W]</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-center">
-                        <tr>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">❌</button></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">❌</button></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">❌</button></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">❌</button></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">❌</button></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">❌</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="overflow-auto table-responsive py-2">
+                    <table class="table table-sm caption-top table-striped table-bordered table-hover" id="tableXY2">
+                        <caption>Dati Secondo Asse</caption>
+                        <thead class="text-center">
+                            <tr class="table-dark">
+                                <th scope="col">VALORI POMPA DI CALORE</th>
+                                <th scope="col">__EMPTY</th>
+                                <th scope="col">__EMPTY_1</th>
+                                <th scope="col">__EMPTY_2</th>
+                                <th scope="col">__EMPTY_3</th>
+                                <th scope="col"></th>
+                            </tr>
+                            <tr>
+                                <th scope="col">T. est. [°C]</th>
+                                <th scope="col">COP</th>
+                                <th scope="col">T. man [°C]</th>
+                                <th scope="col">Pot. Max [W]</th>
+                                <th scope="col">Pot. Min [W]</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">❌</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">❌</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">❌</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">❌</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">❌</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><button class="btn btn-danger btn-sm" onclick="eliminarFila(this)">❌</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <button class="btn btn-success mb-3 " id="btn-add-fila" onclick="agregarFila()">➕ Aggiungi Fila</button>
 
                 <!--ajes 2-->
