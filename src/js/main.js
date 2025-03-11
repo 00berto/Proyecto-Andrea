@@ -168,9 +168,11 @@ function displayData(data) {
 document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("btn-add-fila")
-    .addEventListener("click", agregarFila);
+    .addEventListener("click", function (event) {
+      event.preventDefault(); // Prevenir el envío del formulario
+      agregarFila();
+    });
 
-  // Añadir event listeners a los botones de eliminar ya existentes.
   let botonesEliminar = document.querySelectorAll(".btn-remove-fila");
   botonesEliminar.forEach(function (boton) {
     boton.addEventListener("click", function () {
