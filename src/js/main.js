@@ -5,12 +5,15 @@ import "../scss/styles.css";
 const invio = document.getElementById("creaGraf");
 const visual = document.getElementById("cargaFile");
 const archivoXLSL = document.getElementById("file1");
+
 const progressBar = document.getElementById("progressBar");
 const selectHoja = document.getElementById("selectHoja");
+
 const AsseX1 = document.getElementById("asseX1");
-const AsseX2 = document.getElementById("asseX2");
+const AsseX2 = document.getElementById("asseX2"); // puede ser no necesario
 const AsseY1 = document.getElementById("asseY1");
 const AsseY2 = document.getElementById("asseY2");
+
 const chartType = document.getElementById("chartType").value;
 const download = document.getElementById("download");
 
@@ -253,7 +256,7 @@ window.onload = function () {
     "Pot. Max [W]",
     "Pot. Min [W]",
   ];
-  let selectX = document.getElementById("asseX2");
+  let selectX = document.getElementById("asseX2"); // podria ser no necesario
   let selectY = document.getElementById("asseY2");
 
   columnas.forEach((col, index) => {
@@ -320,11 +323,13 @@ function UpdateColor() {
 
 // Función para generar el gráfico
 
-/*function generateChart(data, type) {
+function generateChart(data, type) {
   const xAxis = AsseX1.value;
   const xAxis2 = AsseX2.value;
   const yAxis = AsseY1.value;
   const yAxis2 = AsseY2.value;
+
+  const valoresY = obtenerDatos().map((fila) => fila[yAxis2]);
 
   const labels = data.map((item) => item[xAxis]);
   //const labels2 = data.map((item) => item[xAxis2]);
@@ -361,7 +366,7 @@ function UpdateColor() {
         {
           label: yAxis2 + " (Asse Y 2)",
           //data: values2,
-          data: AsseY2,
+          data: valoresY,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
           backgroundColor: colore2.value + "80",
           borderColor: colore2.value,
@@ -427,113 +432,14 @@ function UpdateColor() {
           },
         },
 
+        /*
         x1: {
           // Configuración del segundo eje X
           title: {
             display: true,
             text: xAxis2, // Usa el valor seleccionado en AsseX2
           },
-        },
-      },
-    },
-  });
-}*/
-
-function generateChart(data, type) {
-  const xAxis = AsseX1.value;
-  //const xAxis2 = AsseX2.value; // Obtener el valor del eje X secundario
-  const xAxis2 = selectX.value;
-  const yAxis = AsseY1.value;
-  //const yAxis2 = AsseY2.value;
-  const yAxis2 = selectY.value;
-
-  const labels = data.map((item) => item[xAxis]);
-  const labels2 = data.map((item) => item[xAxis2]); // Obtener los labels del eje X secundario
-  const values = data.map((item) => item[yAxis]);
-  const values2 = data.map((item) => item[yAxis2]);
-
-  const nomeGrafico = document.getElementById("nomeGrafico").value;
-
-  const ctx = document.getElementById("myChart").getContext("2d");
-  ctx.canvas.width = 600;
-  ctx.canvas.height = 300;
-
-  if (chartInstance) {
-    chartInstance.destroy();
-  }
-
-  chartInstance = new Chart(ctx, {
-    type: type,
-    data: {
-      labels: labels, // Usar los labels del eje X primario
-      datasets: [
-        {
-          label: yAxis + " (Asse Y 1)",
-          data: values,
-          backgroundColor: colore.value + "80",
-          borderColor: colore.value,
-          borderWidth: 2,
-          fill: false,
-          yAxisID: "y",
-        },
-        {
-          label: yAxis2 + " (Asse Y 2)",
-          data: values2, // Usar los valores del eje Y secundario
-          backgroundColor: colore2.value + "80",
-          borderColor: colore2.value,
-          borderWidth: 2,
-          fill: false,
-          yAxisID: "y1",
-        },
-      ],
-    },
-    options: {
-      maintainAspectRatio: false,
-      responsive: true,
-      plugins: {
-        title: {
-          display: true,
-          text: nomeGrafico,
-          position: "top",
-          font: {
-            size: 16,
-            weight: "bold",
-          },
-          padding: {
-            top: 10,
-            bottom: 10,
-          },
-        },
-      },
-      scales: {
-        y: {
-          type: "linear",
-          position: "left",
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: yAxis,
-          },
-        },
-        y1: {
-          type: "linear",
-          position: "right",
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: yAxis2,
-          },
-          grid: {
-            drawOnChartArea: false,
-          },
-        },
-        x: {
-          // Usar el eje X primario para ambos datasets
-          title: {
-            display: true,
-            text: xAxis,
-          },
-        },
+        },*/
       },
     },
   });
