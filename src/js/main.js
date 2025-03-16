@@ -249,7 +249,7 @@ const btnAddFila = document.getElementById("btn-add-fila");
 btnAddFila.addEventListener("click", agregarFila);
 
 //window.onload = function () {
-document.addEventListener('DOMContentLoaded', function() {  
+document.addEventListener("DOMContentLoaded", function () {
   let columnas = [
     "T. est. [°C]",
     "COP",
@@ -266,7 +266,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   selectX.selectedIndex = 0; // Por defecto, T. est. [°C]
-  selectY.selectedIndex = 1; // Por defecto, COP
+  selectY.selectedIndex = 0; // Por defecto, T. est. [°C]
+  //selectY.selectedIndex = 1; // Por defecto, COP
 
   function dispatchUpdateEvent() {
     let event = new CustomEvent("actualizarSeleccion", {
@@ -280,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   selectX.addEventListener("change", dispatchUpdateEvent);
   selectY.addEventListener("change", dispatchUpdateEvent);
-};
+});
 
 // Funcion para obtener los datos de la tabla
 
