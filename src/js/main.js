@@ -13,6 +13,10 @@ const AsseX1 = document.getElementById("asseX1");
 const AsseX2 = document.getElementById("asseX2"); // puede ser no necesario
 const AsseY1 = document.getElementById("asseY1");
 const AsseY2 = document.getElementById("asseY2");
+const selectX = document.getElementById("asseX2"); // podria ser no necesario
+const selectY = document.getElementById("asseY2");
+
+const btnAddFila = document.getElementById("btn-add-fila");
 
 const chartType = document.getElementById("chartType").value;
 const download = document.getElementById("download");
@@ -245,7 +249,7 @@ function obtenerDatos() {
   return datos;
 }
 
-const btnAddFila = document.getElementById("btn-add-fila");
+//const btnAddFila = document.getElementById("btn-add-fila");
 btnAddFila.addEventListener("click", agregarFila);
 
 //window.onload = function () {
@@ -257,8 +261,9 @@ document.addEventListener("DOMContentLoaded", function () {
     "Pot. Max [W]",
     "Pot. Min [W]",
   ];
+  /*
   let selectX = document.getElementById("asseX2"); // podria ser no necesario
-  let selectY = document.getElementById("asseY2");
+  let selectY = document.getElementById("asseY2");*/
 
   columnas.forEach((col, index) => {
     selectX.add(new Option(col, index));
