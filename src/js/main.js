@@ -182,39 +182,6 @@ document.addEventListener("DOMContentLoaded", function () {
       eliminarFila(this);
     });
   });
-
-  let columnas = [
-    "T. est. [°C]",
-    "COP",
-    "T. man [°C]",
-    "Pot. Max [W]",
-    "Pot. Min [W]",
-  ];
-
-  let selectX = document.getElementById("asseX2"); // podria ser no necesario
-  let selectY = document.getElementById("asseY2");
-
-  columnas.forEach((col, index) => {
-    selectX.add(new Option(col, index));
-    selectY.add(new Option(col, index));
-  });
-
-  selectX.selectedIndex = 0; // Por defecto, T. est. [°C]
-  selectY.selectedIndex = 0; // Por defecto, T. est. [°C]
-  //selectY.selectedIndex = 1; // Por defecto, COP
-
-  function dispatchUpdateEvent() {
-    let event = new CustomEvent("actualizarSeleccion", {
-      detail: {
-        x: selectX.value,
-        y: selectY.value,
-      },
-    });
-    document.dispatchEvent(event);
-  }
-
-  selectX.addEventListener("change", dispatchUpdateEvent);
-  selectY.addEventListener("change", dispatchUpdateEvent);
 });
 
 function agregarFila() {
@@ -282,7 +249,7 @@ function obtenerDatos() {
 btnAddFila.addEventListener("click", agregarFila);*/
 
 //window.onload = function () {
-/*document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   let columnas = [
     "T. est. [°C]",
     "COP",
@@ -291,10 +258,10 @@ btnAddFila.addEventListener("click", agregarFila);*/
     "Pot. Min [W]",
   ];
 
+  /*
   let selectX = document.getElementById("asseX2"); // podria ser no necesario
-  let selectY = document.getElementById("asseY2");
+  let selectY = document.getElementById("asseY2");*/
 
-  
   columnas.forEach((col, index) => {
     selectX.add(new Option(col, index));
     selectY.add(new Option(col, index));
@@ -316,7 +283,7 @@ btnAddFila.addEventListener("click", agregarFila);*/
 
   selectX.addEventListener("change", dispatchUpdateEvent);
   selectY.addEventListener("change", dispatchUpdateEvent);
-});*/
+});
 
 // Funcion para obtener los datos de la tabla
 
@@ -343,6 +310,9 @@ document.addEventListener("actualizarSeleccion", function (event) {
 document.addEventListener("actualizarSeleccion", function (event) {
   actualizarAsseXY(event);
 });
+
+let selectX = document.getElementById("asseX2"); // podria ser no necesario
+let selectY = document.getElementById("asseY2");
 
 // Función cambio color
 const colore = document.getElementById("colore");
