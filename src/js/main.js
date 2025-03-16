@@ -248,7 +248,8 @@ function obtenerDatos() {
 const btnAddFila = document.getElementById("btn-add-fila");
 btnAddFila.addEventListener("click", agregarFila);
 
-window.onload = function () {
+//window.onload = function () {
+document.addEventListener('DOMContentLoaded', function() {  
   let columnas = [
     "T. est. [°C]",
     "COP",
