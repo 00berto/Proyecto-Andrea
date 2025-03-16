@@ -13,10 +13,6 @@ const AsseX1 = document.getElementById("asseX1");
 const AsseX2 = document.getElementById("asseX2"); // puede ser no necesario
 const AsseY1 = document.getElementById("asseY1");
 const AsseY2 = document.getElementById("asseY2");
-const selectX = document.getElementById("asseX2"); // podria ser no necesario
-const selectY = document.getElementById("asseY2");
-
-const btnAddFila = document.getElementById("btn-add-fila");
 
 const chartType = document.getElementById("chartType").value;
 const download = document.getElementById("download");
@@ -186,6 +182,39 @@ document.addEventListener("DOMContentLoaded", function () {
       eliminarFila(this);
     });
   });
+
+  let columnas = [
+    "T. est. [°C]",
+    "COP",
+    "T. man [°C]",
+    "Pot. Max [W]",
+    "Pot. Min [W]",
+  ];
+
+  let selectX = document.getElementById("asseX2"); // podria ser no necesario
+  let selectY = document.getElementById("asseY2");
+
+  columnas.forEach((col, index) => {
+    selectX.add(new Option(col, index));
+    selectY.add(new Option(col, index));
+  });
+
+  selectX.selectedIndex = 0; // Por defecto, T. est. [°C]
+  selectY.selectedIndex = 0; // Por defecto, T. est. [°C]
+  //selectY.selectedIndex = 1; // Por defecto, COP
+
+  function dispatchUpdateEvent() {
+    let event = new CustomEvent("actualizarSeleccion", {
+      detail: {
+        x: selectX.value,
+        y: selectY.value,
+      },
+    });
+    document.dispatchEvent(event);
+  }
+
+  selectX.addEventListener("change", dispatchUpdateEvent);
+  selectY.addEventListener("change", dispatchUpdateEvent);
 });
 
 function agregarFila() {
@@ -249,11 +278,11 @@ function obtenerDatos() {
   return datos;
 }
 
-//const btnAddFila = document.getElementById("btn-add-fila");
-btnAddFila.addEventListener("click", agregarFila);
+/*const btnAddFila = document.getElementById("btn-add-fila");
+btnAddFila.addEventListener("click", agregarFila);*/
 
 //window.onload = function () {
-document.addEventListener("DOMContentLoaded", function () {
+/*document.addEventListener("DOMContentLoaded", function () {
   let columnas = [
     "T. est. [°C]",
     "COP",
@@ -261,10 +290,11 @@ document.addEventListener("DOMContentLoaded", function () {
     "Pot. Max [W]",
     "Pot. Min [W]",
   ];
-  /*
-  let selectX = document.getElementById("asseX2"); // podria ser no necesario
-  let selectY = document.getElementById("asseY2");*/
 
+  let selectX = document.getElementById("asseX2"); // podria ser no necesario
+  let selectY = document.getElementById("asseY2");
+
+  
   columnas.forEach((col, index) => {
     selectX.add(new Option(col, index));
     selectY.add(new Option(col, index));
@@ -286,7 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   selectX.addEventListener("change", dispatchUpdateEvent);
   selectY.addEventListener("change", dispatchUpdateEvent);
-});
+});*/
 
 // Funcion para obtener los datos de la tabla
 
@@ -304,9 +334,14 @@ const actualizarAsseXY = function (event) {
   console.log("AsseY2:", valoresY);
 };
 
+/*
 document.addEventListener("actualizarSeleccion", function (event) {
   let { x, y } = event.detail;
   actualizarAsseXY(x, y);
+});*/
+
+document.addEventListener("actualizarSeleccion", function (event) {
+  actualizarAsseXY(event);
 });
 
 // Función cambio color
