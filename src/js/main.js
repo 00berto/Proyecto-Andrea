@@ -245,8 +245,8 @@ function obtenerDatos() {
   return datos;
 }
 
-/*const btnAddFila = document.getElementById("btn-add-fila");
-btnAddFila.addEventListener("click", agregarFila);*/
+let selectX = document.getElementById("asseX2"); // podria ser no necesario
+let selectY = document.getElementById("asseY2");
 
 //document.addEventListener("DOMContentLoaded", function () {
 let columnas = [
@@ -311,9 +311,6 @@ document.addEventListener("actualizarSeleccion", function (event) {
 document.addEventListener("actualizarSeleccion", function (event) {
   actualizarAsseXY(event);
 });*/
-
-let selectX = document.getElementById("asseX2"); // podria ser no necesario
-let selectY = document.getElementById("asseY2");
 
 // Función cambio color
 const colore = document.getElementById("colore");
