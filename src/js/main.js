@@ -292,22 +292,23 @@ document.addEventListener("DOMContentLoaded", function () {
 // Funcion para obtener los datos de la tabla
 
 const actualizarAsseXY = function (event) {
-  let { x, y } = event.detail;
+  //let { x, y } = event.detail;
+  let { y } = event.detail;
 
-  console.log("Columna X seleccionada:", x);
   console.log("Columna Y seleccionada:", y);
 
   let datos = obtenerDatos();
   //valoresX = datos.map((fila) => fila[x]);
   valoresY = datos.map((fila) => fila[y]);
 
-  //console.log("AsseX2:", valoresX);
   console.log("AsseY2:", valoresY);
 };
 
 document.addEventListener("actualizarSeleccion", function (event) {
-  let { x, y } = event.detail;
-  actualizarAsseXY(x, y);
+  //let { x, y } = event.detail;  actualizarAsseXY(x, y);
+
+  let { y } = event.detail;
+  actualizarAsseXY(y);
 });
 /*
 document.addEventListener("actualizarSeleccion", function (event) {
