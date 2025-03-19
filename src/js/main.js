@@ -246,7 +246,7 @@ function obtenerDatos() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  let selectX = document.getElementById("asseX2"); // podria ser no necesario
+  //let selectX = document.getElementById("asseX2"); // podria ser no necesario
   let selectY = document.getElementById("asseY2");
   console.log("Opciones de asseY2:", selectY.options);
   console.log("asseY2:", selectY);
@@ -265,11 +265,11 @@ document.addEventListener("DOMContentLoaded", function () {
 */
 
   columnas.forEach((col, index) => {
-    selectX.add(new Option(col, index));
+    //selectX.add(new Option(col, index));
     selectY.add(new Option(col, index));
   });
 
-  selectX.selectedIndex = 0; // Por defecto, T. est. [°C]
+  //selectX.selectedIndex = 0; // Por defecto, T. est. [°C]
   selectY.selectedIndex = 0; // Por defecto, T. est. [°C]
   //selectY.selectedIndex = 1; // Por defecto, COP
 
@@ -278,14 +278,14 @@ document.addEventListener("DOMContentLoaded", function () {
   function dispatchUpdateEvent() {
     let event = new CustomEvent("actualizarSeleccion", {
       detail: {
-        x: selectX.value,
+        //x: selectX.value,
         y: selectY.value,
       },
     });
     document.dispatchEvent(event);
   }
 
-  selectX.addEventListener("change", dispatchUpdateEvent);
+  //selectX.addEventListener("change", dispatchUpdateEvent);
   selectY.addEventListener("change", dispatchUpdateEvent);
 });
 
@@ -298,10 +298,10 @@ const actualizarAsseXY = function (event) {
   console.log("Columna Y seleccionada:", y);
 
   let datos = obtenerDatos();
-  valoresX = datos.map((fila) => fila[x]);
+  //valoresX = datos.map((fila) => fila[x]);
   valoresY = datos.map((fila) => fila[y]);
 
-  console.log("AsseX2:", valoresX);
+  //console.log("AsseX2:", valoresX);
   console.log("AsseY2:", valoresY);
 };
 
