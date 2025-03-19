@@ -220,10 +220,6 @@ function eliminarFila(boton) {
   fila.remove();
 }
 
-// Variables asse X Y a nivel global
-//let AsseX2 = [];
-//let AsseY2 = [];
-
 function obtenerDatos() {
   let tabla = document.getElementById("tableXY2");
   let datos = [];
@@ -246,9 +242,7 @@ function obtenerDatos() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  //let selectX = document.getElementById("asseX2"); // podria ser no necesario
   let selectY = document.getElementById("asseY2");
-  console.log("Opciones de asseY2:", selectY.options);
   console.log("asseY2:", selectY);
 
   let columnas = [
@@ -259,61 +253,40 @@ document.addEventListener("DOMContentLoaded", function () {
     "Pot. Min [W]",
   ];
 
-  /*
-  let selectX = document.getElementById("asseX2"); // podria ser no necesario
-  let selectY = document.getElementById("asseY2");
-*/
-
   columnas.forEach((col, index) => {
-    //selectX.add(new Option(col, index));
     selectY.add(new Option(col, index));
   });
 
-  //selectX.selectedIndex = 0; // Por defecto, T. est. [°C]
   selectY.selectedIndex = 0; // Por defecto, T. est. [°C]
-  //selectY.selectedIndex = 1; // Por defecto, COP
 
-  console.log("Opciones de asseY2:", selectY.options);
+  console.log("Opciones de asseY2:", selectY.options); // Mover console.log aquí
 
   function dispatchUpdateEvent() {
     let event = new CustomEvent("actualizarSeleccion", {
       detail: {
-        //x: selectX.value,
         y: selectY.value,
       },
     });
     document.dispatchEvent(event);
   }
 
-  //selectX.addEventListener("change", dispatchUpdateEvent);
   selectY.addEventListener("change", dispatchUpdateEvent);
 });
 
-// Funcion para obtener los datos de la tabla
-
 const actualizarAsseXY = function (event) {
-  //let { x, y } = event.detail;
   let { y } = event.detail;
 
   console.log("Columna Y seleccionada:", y);
 
   let datos = obtenerDatos();
-  //valoresX = datos.map((fila) => fila[x]);
   valoresY = datos.map((fila) => fila[y]);
 
   console.log("AsseY2:", valoresY);
 };
 
 document.addEventListener("actualizarSeleccion", function (event) {
-  //let { x, y } = event.detail;  actualizarAsseXY(x, y);
-
-  let { y } = event.detail;
-  actualizarAsseXY(y);
-});
-/*
-document.addEventListener("actualizarSeleccion", function (event) {
   actualizarAsseXY(event);
-});*/
+});
 
 // Función cambio color
 const colore = document.getElementById("colore");
@@ -340,7 +313,7 @@ function generateChart(data, type) {
   const xAxis = AsseX1.value;
   const xAxis2 = AsseX2.value;
   const yAxis = AsseY1.value;
-  const yAxis2 = AsseY2.value;
+  const yAxis2 = selectY.value;
 
   const valoresY = obtenerDatos().map((fila) => fila[yAxis2]);
 
