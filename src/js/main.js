@@ -248,43 +248,44 @@ function obtenerDatos() {
 /*const btnAddFila = document.getElementById("btn-add-fila");
 btnAddFila.addEventListener("click", agregarFila);*/
 
-document.addEventListener("DOMContentLoaded", function () {
-  let columnas = [
-    "T. est. [°C]",
-    "COP",
-    "T. man [°C]",
-    "Pot. Max [W]",
-    "Pot. Min [W]",
-  ];
+//document.addEventListener("DOMContentLoaded", function () {
+let columnas = [
+  "T. est. [°C]",
+  "COP",
+  "T. man [°C]",
+  "Pot. Max [W]",
+  "Pot. Min [W]",
+];
 
-  /*
+/*
   let selectX = document.getElementById("asseX2"); // podria ser no necesario
-  let selectY = document.getElementById("asseY2");*/
+  let selectY = document.getElementById("asseY2");
+*/
 
-  columnas.forEach((col, index) => {
-    selectX.add(new Option(col, index));
-    selectY.add(new Option(col, index));
-  });
-
-  selectX.selectedIndex = 0; // Por defecto, T. est. [°C]
-  selectY.selectedIndex = 0; // Por defecto, T. est. [°C]
-  //selectY.selectedIndex = 1; // Por defecto, COP
-
-  console.log("Opciones de asseY2:", selectY.options);
-
-  function dispatchUpdateEvent() {
-    let event = new CustomEvent("actualizarSeleccion", {
-      detail: {
-        x: selectX.value,
-        y: selectY.value,
-      },
-    });
-    document.dispatchEvent(event);
-  }
-
-  selectX.addEventListener("change", dispatchUpdateEvent);
-  selectY.addEventListener("change", dispatchUpdateEvent);
+columnas.forEach((col, index) => {
+  selectX.add(new Option(col, index));
+  selectY.add(new Option(col, index));
 });
+
+selectX.selectedIndex = 0; // Por defecto, T. est. [°C]
+selectY.selectedIndex = 0; // Por defecto, T. est. [°C]
+//selectY.selectedIndex = 1; // Por defecto, COP
+
+console.log("Opciones de asseY2:", selectY.options);
+
+function dispatchUpdateEvent() {
+  let event = new CustomEvent("actualizarSeleccion", {
+    detail: {
+      x: selectX.value,
+      y: selectY.value,
+    },
+  });
+  document.dispatchEvent(event);
+}
+
+selectX.addEventListener("change", dispatchUpdateEvent);
+selectY.addEventListener("change", dispatchUpdateEvent);
+//});
 
 // Funcion para obtener los datos de la tabla
 
