@@ -182,6 +182,40 @@ document.addEventListener("DOMContentLoaded", function () {
       eliminarFila(this);
     });
   });
+
+  let columnas = [
+    "T. est. [°C]",
+    "COP",
+    "T. man [°C]",
+    "Pot. Max [W]",
+    "Pot. Min [W]",
+  ];
+
+  /*
+  let selectX = document.getElementById("asseX2"); // podria ser no necesario
+  let selectY = document.getElementById("asseY2");*/
+
+  columnas.forEach((col, index) => {
+    //selectX.add(new Option(col, index));
+    selectY.add(new Option(col, index));
+  });
+
+  //selectX.selectedIndex = 0; // Por defecto, T. est. [°C]
+  selectY.selectedIndex = 0; // Por defecto, T. est. [°C]
+  //selectY.selectedIndex = 1; // Por defecto, COP
+
+  function dispatchUpdateEvent() {
+    let event = new CustomEvent("actualizarSeleccion", {
+      detail: {
+        //x: selectX.value,
+        y: selectY.value,
+      },
+    });
+    document.dispatchEvent(event);
+  }
+
+  //selectX.addEventListener("change", dispatchUpdateEvent);
+  selectY.addEventListener("change", dispatchUpdateEvent);
 });
 
 function agregarFila() {
@@ -213,6 +247,7 @@ function agregarFila() {
 
   // Agregar la fila a la tabla
   tabla.appendChild(nuevaFila);
+  console.log("Opciones de asseY2:", selectY.options);
 }
 
 function eliminarFila(boton) {
@@ -244,46 +279,12 @@ function obtenerDatos() {
 
   return datos;
 }
+console.log("Opciones de asseY2:", selectY.options);
 
 /*const btnAddFila = document.getElementById("btn-add-fila");
 btnAddFila.addEventListener("click", agregarFila);*/
 
-//window.onload = function () {
-document.addEventListener("DOMContentLoaded", function () {
-  let columnas = [
-    "T. est. [°C]",
-    "COP",
-    "T. man [°C]",
-    "Pot. Max [W]",
-    "Pot. Min [W]",
-  ];
-
-  /*
-  let selectX = document.getElementById("asseX2"); // podria ser no necesario
-  let selectY = document.getElementById("asseY2");*/
-
-  columnas.forEach((col, index) => {
-    selectX.add(new Option(col, index));
-    selectY.add(new Option(col, index));
-  });
-
-  selectX.selectedIndex = 0; // Por defecto, T. est. [°C]
-  selectY.selectedIndex = 0; // Por defecto, T. est. [°C]
-  //selectY.selectedIndex = 1; // Por defecto, COP
-
-  function dispatchUpdateEvent() {
-    let event = new CustomEvent("actualizarSeleccion", {
-      detail: {
-        x: selectX.value,
-        y: selectY.value,
-      },
-    });
-    document.dispatchEvent(event);
-  }
-
-  selectX.addEventListener("change", dispatchUpdateEvent);
-  selectY.addEventListener("change", dispatchUpdateEvent);
-});
+//document.addEventListener("DOMContentLoaded", function () {});
 
 // Funcion para obtener los datos de la tabla
 
@@ -300,16 +301,16 @@ const actualizarAsseXY = function (event) {
   console.log("AsseX2:", valoresX);
   console.log("AsseY2:", valoresY);
 };
+console.log("Opciones de asseY2:", selectY.options);
 
-/*
 document.addEventListener("actualizarSeleccion", function (event) {
   let { x, y } = event.detail;
   actualizarAsseXY(x, y);
-});*/
-
+});
+/*
 document.addEventListener("actualizarSeleccion", function (event) {
   actualizarAsseXY(event);
-});
+});*/
 
 let selectX = document.getElementById("asseX2"); // podria ser no necesario
 let selectY = document.getElementById("asseY2");
