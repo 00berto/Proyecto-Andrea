@@ -241,11 +241,11 @@ function obtenerDatos() {
   return datos;
 }
 
-let selectY = document.getElementById("asseY2");
-console.log("asseY2 GLOBAL:", selectY);
+let AsseY2 = document.getElementById("asseY2");
+console.log("asseY2 GLOBAL:", AsseY2);
 document.addEventListener("DOMContentLoaded", function () {
   //let selectY = document.getElementById("asseY2");
-  console.log("asseY2:", selectY);
+  console.log("asseY2:", AsseY2);
 
   let columnas = [
     "T. est. [°C]",
@@ -256,23 +256,23 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   columnas.forEach((col, index) => {
-    selectY.add(new Option(col, index));
+    AsseY2.add(new Option(col, index));
   });
 
-  selectY.selectedIndex = 0; // Por defecto, T. est. [°C]
+  AsseY2.selectedIndex = 0; // Por defecto, T. est. [°C]
 
-  console.log("Opciones de asseY2:", selectY.options); // Mover console.log aquí
+  console.log("Opciones de asseY2:", AsseY2.options); // Mover console.log aquí
 
   function dispatchUpdateEvent() {
     let event = new CustomEvent("actualizarSeleccion", {
       detail: {
-        y: selectY.value,
+        y: AsseY2.value,
       },
     });
     document.dispatchEvent(event);
   }
 
-  selectY.addEventListener("change", dispatchUpdateEvent);
+  AsseY2.addEventListener("change", dispatchUpdateEvent);
 });
 
 const actualizarAsseXY = function (event) {
@@ -281,7 +281,6 @@ const actualizarAsseXY = function (event) {
   console.log("Columna Y seleccionada:", y);
 
   let datos = obtenerDatos();
-  //valoresY = datos.map((fila) => fila[y]);
   let valoresY = datos.map((fila) => fila[y]);
   console.log("AsseY2:", valoresY);
 };
@@ -315,7 +314,7 @@ function generateChart(data, type) {
   const xAxis = AsseX1.value;
   //const xAxis2 = AsseX2.value;
   const yAxis = AsseY1.value;
-  const yAxis2 = selectY.value;
+  const yAxis2 = AsseY2.value;
 
   const valoresY = obtenerDatos().map((fila) => fila[yAxis2]);
   console.log("Valores de Y2 grafico:", valoresY);
@@ -329,7 +328,7 @@ function generateChart(data, type) {
 
   const ctx = document.getElementById("myChart").getContext("2d");
   ctx.canvas.width = 600;
-  ctx.canvas.height = 300;
+  ctx.canvas.height = 600;
 
   if (chartInstance) {
     chartInstance.destroy(); // Destruir el gráfico existente
@@ -361,7 +360,8 @@ function generateChart(data, type) {
           borderColor: colore2.value,
           borderWidth: 2,
           fill: false,
-          xAxisID: "x1", // Asocia este dataset al eje 'x1' secundario
+          xAxisID: "x", // Asocia este dataset al eje 'x' primario
+          //xAxisID: "x1", // Asocia este dataset al eje 'x1' secundario
           yAxisID: "y1", // Asocia este dataset al eje 'y1' secundario
         },
       ],
