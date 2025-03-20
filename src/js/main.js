@@ -322,7 +322,8 @@ function generateChart(data, type) {
   const labels = data.map((item) => item[xAxis]);
   //const labels2 = data.map((item) => item[xAxis2]);
   const values = data.map((item) => item[yAxis]);
-  const values2 = data.map((item) => item[yAxis2]);
+  //const values2 = data.map((item) => item[yAxis2]);
+  const values2 = data.map((item) => item[valoresY]);
 
   const nomeGrafico = document.getElementById("nomeGrafico").value;
 
@@ -360,8 +361,8 @@ function generateChart(data, type) {
           borderColor: colore2.value,
           borderWidth: 2,
           fill: false,
-          xAxisID: "x", // Asocia este dataset al eje 'x' primario
-          //xAxisID: "x1", // Asocia este dataset al eje 'x1' secundario
+          //xAxisID: "x", // Asocia este dataset al eje 'x' primario
+          xAxisID: "x1", // Asocia este dataset al eje 'x1' secundario
           yAxisID: "y1", // Asocia este dataset al eje 'y1' secundario
         },
       ],
