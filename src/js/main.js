@@ -241,6 +241,8 @@ function obtenerDatos() {
   return datos;
 }
 
+let valoresY = [];
+
 document.addEventListener("DOMContentLoaded", function () {
   let selectY = document.getElementById("asseY2");
   console.log("asseY2:", selectY);
@@ -311,11 +313,12 @@ function UpdateColor() {
 
 function generateChart(data, type) {
   const xAxis = AsseX1.value;
-  const xAxis2 = AsseX2.value;
+  //const xAxis2 = AsseX2.value;
   const yAxis = AsseY1.value;
   const yAxis2 = selectY.value;
 
   const valoresY = obtenerDatos().map((fila) => fila[yAxis2]);
+  console.log("Valores de Y2 grafico:", valoresY);
 
   const labels = data.map((item) => item[xAxis]);
   //const labels2 = data.map((item) => item[xAxis2]);
