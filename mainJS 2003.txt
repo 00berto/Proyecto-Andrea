@@ -12,6 +12,7 @@ const selectHoja = document.getElementById("selectHoja");
 const AsseX1 = document.getElementById("asseX1");
 const AsseY1 = document.getElementById("asseY1");
 
+const chartType = document.getElementById("chartType").value;
 const download = document.getElementById("download");
 
 archivoXLSL.addEventListener("change", () => {
@@ -145,6 +146,9 @@ function displayData(data) {
   output.appendChild(table);
 }
 
+
+
+
 // Funciónes de la tabla
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -220,6 +224,12 @@ function obtenerDatos() {
   return datos;
 }
 
+/*
+let AsseY2 = document.getElementById("asseY2");
+console.log("asseY2 GLOBAL:", AsseY2);*/
+
+
+
 // Grafico 2
 let columnas = [
   "T. est. [°C]",
@@ -228,15 +238,57 @@ let columnas = [
   "Pot. Max [W]",
   "Pot. Min [W]",
 ];
-const configuracion_Grafico2 = {
-  asse_X: columnas[1],
-  asse_Y1: columnas[3],
-  asse_Y2: columnas[4],
+
+let asse_X_grafico2 = columnas[1];
+let asse_Y1_grafico2 = columnas[3];
+let asse_Y2_grafico2 = columnas[4];
+console.log("asseX GRAFICO 2:", asse_X_grafico2);
+  console.log("asseY1 GRAFICO 2:", asse_Y1_grafico2);
+  console.log("asseY2 GRAFICO 2:", asse_Y2_grafico2);
+ 
+ 
+  /*
+document.addEventListener("DOMContentLoaded", function () {
+  
+  columnas.forEach((col, index) => {
+    asse_X_grafico2.add(new Option(col, index));
+    asse_Y1_grafico2.add(new Option(col, index));
+    asse_Y2_grafico2.add(new Option(col, index));
+  });
+
+  console.log("Opciones de asseX:", asse_X_grafico2.options);
+  console.log("Opciones de asseY1:", asse_Y1_grafico2.options);
+  console.log("Opciones de asseY2:", asse_Y2_grafico2.options);
+
+ function dispatchUpdateEvent() {
+    let event = new CustomEvent("actualizarSeleccion", {
+      detail: {
+        x:asse_X_grafico2.value,
+        y:asse_Y1_grafico2.value,
+        y2:asse_Y2_grafico2.value,
+      },
+    });
+    document.dispatchEvent(event);
+  }
+
+  AsseY2.addEventListener("change", dispatchUpdateEvent);
+ 
+});
+
+
+const actualizarAsseXY = function (event) {
+  let { y } = event.detail;
+
+  console.log("Columna Y seleccionada:", y);
+
+  let datos = obtenerDatos();
+  let valoresY = datos.map((fila) => fila[y]);
+  console.log("AsseY2:", valoresY);
 };
 
-console.log("asseX GRAFICO 2:", configuracion_Grafico2.asse_X);
-console.log("asseY1 GRAFICO 2:", configuracion_Grafico2.asse_Y1);
-console.log("asseY2 GRAFICO 2:", configuracion_Grafico2.asse_Y2);
+document.addEventListener("actualizarSeleccion", function (event) {
+  actualizarAsseXY(event);
+});*/
 
 // Función cambio color
 const colore = document.getElementById("colore");
@@ -259,54 +311,34 @@ function UpdateColor() {
 
 // Función para generar el gráfico
 
-const nome_Grafico_Input = document.getElementById("nomeGrafico");
-const titulo_Grafico = document.getElementById("tituloGrafico");
-
-function actualizar_Titulo_Grafico() {
-  let nome_Grafico = nome_Grafico_Input.value;
-  if (nome_Grafico === "") {
-    nome_Grafico = "Grafico";
-  }
-  titulo_Grafico.textContent = nome_Grafico;
-}
-
-// Titulo inicial
-actualizar_Titulo_Grafico();
-
-// Cambio titulo en tiempo real
-nome_Grafico_Input.addEventListener("input", actualizar_Titulo_Grafico);
-
-function generateChart(data) {
+function generateChart(data, type) {
   //Gráfico 1
   const xAxis = AsseX1.value;
   const yAxis = AsseY1.value;
 
-  const labels = data.map((item) => item[xAxis]);
-  const values = data.map((item) => item[yAxis]);
-
   //Gráfico 2
-  const xAxis_grafico2 = configuracion_Grafico2.asse_X;
-  const yAxis1_grafico2 = configuracion_Grafico2.asse_Y1;
-  const yAxis2_grafico2 = configuracion_Grafico2.asse_Y2;
+  const xAxis_grafico2 = asse_X_grafico2;
+  const yAxis1_grafico2 = asse_Y1_grafico2;
+  const yAxis2_grafico2 = asse_Y2_grafico2;
 
-  const valoresX_grafico2 = obtenerDatos().map((fila) => fila[xAxis_grafico2]);
+  const yAxis2nombre = columnas[asse_Y1_grafico2];
 
-  const valoresY1_grafico2 = obtenerDatos().map(
-    (fila) => fila[yAxis1_grafico2]
-  );
 
-  const valoresY2_grafico2 = obtenerDatos().map(
-    (fila) => fila[yAxis2_grafico2]
-  );
+/*  const yAxis2 = AsseY2.value;
+  const yAxis2nombre = columnas[AsseY2.value];
 
-  console.log("Valores de X grafico2:", valoresX_grafico2);
-  console.log("Valores de Y1 grafico2:", valoresY1_grafico2);
-  console.log("Valores de Y2 grafico2:", valoresY2_grafico2);
+  const valoresY = obtenerDatos().map((fila) => fila[yAxis2]);
+  console.log("Valores de Y2 grafico:", valoresY);*/
 
-  // Nombre General del gráfico
+  const labels = data.map((item) => item[xAxis]);
+  //const labels2 = data.map((item) => item[xAxis2]);
+  const values = data.map((item) => item[yAxis]);
+  //const values2 = data.map((item) => item[yAxis2]);
+  //const values2 = data.map((item) => item[valoresY]);
+  const values2 = obtenerDatos().map((fila) => fila[yAxis2]);
+
   const nomeGrafico = document.getElementById("nomeGrafico").value;
 
-  // Dimensiones Genarales Grafico
   const ctx = document.getElementById("myChart").getContext("2d");
   ctx.canvas.width = 600;
   ctx.canvas.height = 600;
@@ -315,42 +347,34 @@ function generateChart(data) {
     chartInstance.destroy(); // Destruir el gráfico existente
   }
 
-  // Tipo de gráfico
-  let type_grafico1 = "scatter";
-  let type_grafico2 = "line";
-
-  // Crear el gráfico
   chartInstance = new Chart(ctx, {
+    type: type,
     data: {
       labels: labels,
       datasets: [
         {
-          type: type_grafico1,
-          label: " Grafico Dispersione",
+          label: yAxis + " (Asse Y 1)",
           data: values,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
           backgroundColor: colore.value + "80",
           borderColor: colore.value,
           borderWidth: 2,
           fill: false,
-          xAxisID: "x", // asse X primer grafico
-          yAxisID: "y", // asse Y primer grafico
+          xAxisID: "x", // Asocia este dataset al eje 'x' principal
+          yAxisID: "y", // Asocia este dataset al eje 'y' principal
         },
-      ],
 
-      datasets: [
         {
-          type: type_grafico2,
-          label: " Grafico Linea",
-          data: valoresX_grafico2,
+          label: yAxis2nombre + " (Asse Y 2)",
+          data: values2,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
           backgroundColor: colore2.value + "80",
           borderColor: colore2.value,
           borderWidth: 2,
           fill: false,
-          xAxisID: "x1", // asse X segundo grafico
-          yAxisID: "y1", // asse Y1 segungo grafico
-          yAxisID2: "y2", // asse Y2 segundo grafico
+          //xAxisID: "x", // Asocia este dataset al eje 'x' primario
+          xAxisID: "x1", // Asocia este dataset al eje 'x1' secundario
+          yAxisID: "y1", // Asocia este dataset al eje 'y1' secundario
         },
       ],
     },
@@ -358,13 +382,7 @@ function generateChart(data) {
       maintainAspectRatio: false,
       responsive: true,
       plugins: {
-        // Legend
-        legend: {
-          display: true,
-          position: "bottom",
-        },
-
-        // Título general
+        // Añade esta sección para el título general
         title: {
           display: true, // Habilita el título
           text: nomeGrafico,
@@ -380,7 +398,32 @@ function generateChart(data) {
         },
       },
       scales: {
-        // Gráficos 1
+        y: {
+          // Configuración del primer eje Y
+          type: "linear", // Tipo de escala
+          position: "left", // Posición del eje (izquierda)
+          beginAtZero: true,
+          title: {
+            // Añade títulos a los ejes
+            display: true,
+            text: yAxis, // Usa el valor seleccionado en AsseY1
+          },
+        },
+
+        y1: {
+          // Configuración del segundo eje Y
+          type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
+          position: "right", // Posición del eje (derecha)
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: yAxis2nombre, // Usa el valor seleccionado en AsseY2
+          },
+
+          grid: {
+            drawOnChartArea: false, // Evita que la grid del segundo eje se superponga al primero
+          },
+        },
 
         x: {
           // Configuración del eje X
@@ -390,55 +433,11 @@ function generateChart(data) {
           },
         },
 
-        y: {
-          // Configuración eje Y grafico 1
-
-          type: "linear", // Tipo de escala
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: yAxis, // Usa el valor seleccionado en AsseY1
-          },
-        },
-
-        // Gráfico 2
         x1: {
           // Configuración del segundo eje X
           title: {
             display: false,
-            text: xAxis_grafico2,
-          },
-        },
-
-        y1: {
-          // Configuración del primer eje Y del segundo gráfico
-
-          type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
-          position: "left", // Posición del eje (<-)
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: yAxis1_grafico2,
-          },
-
-          grid: {
-            drawOnChartArea: false, // Evita que la grid del segundo eje se superponga al primero
-          },
-        },
-
-        y2: {
-          // Configuración del segundo eje Y del segundo grafico
-
-          type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
-          position: "right", // Posición del eje (->)
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: yAxis2_grafico2,
-          },
-
-          grid: {
-            drawOnChartArea: false, // Evita que la grid del segundo eje se superponga al primero
+            text: xAxis, // Usa el valor seleccionado en AsseX2
           },
         },
       },

@@ -34,6 +34,8 @@
         <form action="">
             <div class="container-fluid bg-success-light py-3">
 
+                <!--GRAFICO 1-->
+
                 <!--container carga y selezione del foglio-->
                 <div class="row mx-auto d-flex align-items-end justify-content-between">
                     <div class="col-12 col-md-6 col-lg-4 mb-3">
@@ -75,6 +77,10 @@
 
 
                 <!--ejes-->
+                <div class="row mx-auto d-flex align-items-end justify-content-center">
+                    <h4 class="col-12 text-center">Opzioni Grafico 1</h4>
+                </div>
+
                 <div class="row mx-auto d-flex align-items-end justify-content-between">
 
                     <div class="col-12 col-md-6 col-lg-4 mb-3 selectorX">
@@ -83,12 +89,12 @@
                     </div>
 
                     <div class="col-12 col-md-6 col-lg-4 mb-3 selectorY">
-                        <label class="form-label" for="form-text">Asse Y (1)</label>
+                        <label class="form-label" for="form-text">Asse Y</label>
                         <select id="asseY1" class="form-select form-select-lg"></select>
                     </div>
 
                     <div class="col-12 col-md-6 col-lg-4 mb-3">
-                        <label class="form-label" for="form-text">Colore Asse Y1</label>
+                        <label class="form-label" for="form-text">Colore</label>
                         <select id="colore" class="form-select form-select-lg">
                             <option value="black">Nero</option>
                             <option value="white">Bianco</option>
@@ -105,6 +111,8 @@
             </div>
 
             <hr>
+
+            <!--GRAFICO 2-->
 
             <div class="container-fluid bg-warning-light py-3">
 
@@ -187,19 +195,12 @@
                 <!--ajes 2-->
                 <div class="row mx-auto d-flex align-items-end justify-content-between">
 
-                    <!-- eje X2
-                    <div class="col-12 col-md-6 col-lg-4 mb-3 selectorX">
-                        <label class="form-label" for="form-text">Asse X (2)</label>
-                        <select id="asseX2" class="form-select form-select-lg"></select>
-                    </div>-->
-
-                    <div class="col-12 col-md-6 col-lg-4 mb-3 selectorY">
-                        <label class="form-label" for="form-text">Asse Y (2)</label>
-                        <select id="asseY2" class="form-select form-select-lg"></select>
+                    <div class="row mx-auto d-flex align-items-end justify-content-center">
+                        <h4 class="col-12 text-center">Opzioni Grafico 2</h4>
                     </div>
 
                     <div class="col-12 col-md-6 col-lg-4 mb-3">
-                        <label class="form-label" for="form-text">Colore Asse Y2</label>
+                        <label class="form-label" for="form-text">Colore </label>
                         <select id="colore2" class="form-select form-select-lg">
                             <option value="black">Nero</option>
                             <option value="white">Bianco</option>
@@ -216,25 +217,14 @@
 
             <hr>
 
+            <!-- GRAFICO GENERAL -->
             <div class="container-fluid bg-info-light py-3">
                 <!--aspetto-->
-                <class class="row mx-auto d-flex align-items-end justify-content-between">
 
-                    <div class="col-12 col-md-6 col-lg-4 mb-3">
-                        <label class="form-label" for="form-text">Tipo di Grafico</label>
-                        <select id="chartType" class="form-select form-select-lg">
-                            <option value="scatter">Dispersione</option>
-                            <option value="line">Linee</option>
-                            <option value="bar">Barre</option>
-                            <option value="column">Colonne</option>
-                            <option value="pie">Circolare</option>
-                            <option value="area">Area</option>
-                            <option value="bubble">Bolle</option>
-                            <option value="doughnut">Anello</option>
-                            <option value="radar">Radar</option>
-                            <option value="polarArea">Area Polare</option>
-                        </select>
-                    </div>
+                <div class="row mx-auto d-flex align-items-end justify-content-center">
+                    <h4 class="col-12 text-center">Grafico </h4>
+                </div>
+                <class class="row mx-auto d-flex align-items-end justify-content-between">
 
                     <div class="col-12 col-md-6 col-lg-4 mb-3">
                         <input class="col-12  form-control form-control-lg" type="text" id="nomeGrafico"
@@ -246,19 +236,18 @@
                 <div class="row mt-4 mx-auto d-flex">
                     <div class="col-12 col-md-6 col-lg-6 mb-3">
                         <button type="button" class="btn btn-dark btn-lg w-100" id="creaGraf">Crea
-                            Grafico</button>
+                        </button>
                     </div>
 
                     <div class="col-12 col-md-6 col-lg-6 mb-3">
                         <button type="button" class="btn btn-dark btn-lg w-100" id="download">Scarica
-                            Grafico</button>
+                        </button>
                     </div>
                 </div>
 
                 <div class="container mt-4">
                     <div class="card">
-                        <div class="card-header bg-dark text-white">
-                            Grafico
+                        <div class="card-header bg-dark text-white" id="tituloGrafico">
                         </div>
 
                         <div class="card-body">
