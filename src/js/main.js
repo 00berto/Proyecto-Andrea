@@ -10,7 +10,7 @@ const progressBar = document.getElementById("progressBar");
 const selectHoja = document.getElementById("selectHoja");
 
 const AsseX1 = document.getElementById("asseX1");
-const AsseX2 = document.getElementById("asseX2"); // puede ser no necesario
+//const AsseX2 = document.getElementById("asseX2"); // puede ser no necesario
 const AsseY1 = document.getElementById("asseY1");
 //const AsseY2 = document.getElementById("asseY2");
 
@@ -281,8 +281,8 @@ const actualizarAsseXY = function (event) {
   console.log("Columna Y seleccionada:", y);
 
   let datos = obtenerDatos();
-  valoresY = datos.map((fila) => fila[y]);
-
+  //valoresY = datos.map((fila) => fila[y]);
+  let valoresY = datos.map((fila) => fila[y]);
   console.log("AsseY2:", valoresY);
 };
 
