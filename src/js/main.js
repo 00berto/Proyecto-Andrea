@@ -241,10 +241,10 @@ function obtenerDatos() {
   return datos;
 }
 
-let valoresY = [];
-
+let selectY = document.getElementById("asseY2");
+console.log("asseY2 GLOBAL:", selectY);
 document.addEventListener("DOMContentLoaded", function () {
-  let selectY = document.getElementById("asseY2");
+  //let selectY = document.getElementById("asseY2");
   console.log("asseY2:", selectY);
 
   let columnas = [
