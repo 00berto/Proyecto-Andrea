@@ -243,6 +243,7 @@ function obtenerDatos() {
 
 let AsseY2 = document.getElementById("asseY2");
 console.log("asseY2 GLOBAL:", AsseY2);
+
 document.addEventListener("DOMContentLoaded", function () {
   //let selectY = document.getElementById("asseY2");
   console.log("asseY2:", AsseY2);
@@ -274,6 +275,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   AsseY2.addEventListener("change", dispatchUpdateEvent);
 });
+
+let columnas = [
+  "T. est. [°C]",
+  "COP",
+  "T. man [°C]",
+  "Pot. Max [W]",
+  "Pot. Min [W]",
+];
 
 const actualizarAsseXY = function (event) {
   let { y } = event.detail;
@@ -315,6 +324,7 @@ function generateChart(data, type) {
   //const xAxis2 = AsseX2.value;
   const yAxis = AsseY1.value;
   const yAxis2 = AsseY2.value;
+  const yAxis2nombre = columnas[AsseY2.value];
 
   const valoresY = obtenerDatos().map((fila) => fila[yAxis2]);
   console.log("Valores de Y2 grafico:", valoresY);
@@ -323,7 +333,8 @@ function generateChart(data, type) {
   //const labels2 = data.map((item) => item[xAxis2]);
   const values = data.map((item) => item[yAxis]);
   //const values2 = data.map((item) => item[yAxis2]);
-  const values2 = data.map((item) => item[valoresY]);
+  //const values2 = data.map((item) => item[valoresY]);
+  const values2 = obtenerDatos().map((fila) => fila[yAxis2]);
 
   const nomeGrafico = document.getElementById("nomeGrafico").value;
 
@@ -353,8 +364,7 @@ function generateChart(data, type) {
         },
 
         {
-          label: yAxis2 + " (Asse Y 2)",
-          //data: values2,
+          label: yAxis2nombre + " (Asse Y 2)",
           data: values2,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
           backgroundColor: colore2.value + "80",
@@ -406,7 +416,7 @@ function generateChart(data, type) {
           beginAtZero: true,
           title: {
             display: true,
-            text: yAxis2, // Usa el valor seleccionado en AsseY2
+            text: yAxis2nombre, // Usa el valor seleccionado en AsseY2
           },
 
           grid: {
@@ -422,14 +432,13 @@ function generateChart(data, type) {
           },
         },
 
-        /*
         x1: {
           // Configuración del segundo eje X
           title: {
-            display: true,
-            text: xAxis2, // Usa el valor seleccionado en AsseX2
+            display: false,
+            text: xAxis, // Usa el valor seleccionado en AsseX2
           },
-        },*/
+        },
       },
     },
   });
