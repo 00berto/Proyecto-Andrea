@@ -355,7 +355,7 @@ function generateChart(data, type) {
         {
           label: yAxis2 + " (Asse Y 2)",
           //data: values2,
-          data: valoresY,
+          data: values2,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
           backgroundColor: colore2.value + "80",
           borderColor: colore2.value,
