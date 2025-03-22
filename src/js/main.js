@@ -242,7 +242,7 @@ const configuracion_Grafico2 = {
   asse_Y3: columnas.indexOf("Pot. Min [W]"),
 };
 
-console.log("asseX GRAFICO 2:", configuracion_Grafico2.asse_X);
+console.log("asseX GRAFICO 2:", configuracion_Grafico2.asse_X2);
 console.log("asseY1 GRAFICO 2:", configuracion_Grafico2.asse_Y1);
 console.log("asseY2 GRAFICO 2:", configuracion_Grafico2.asse_Y2);
 
@@ -297,6 +297,8 @@ function generateChart(data) {
   const xAxis = AsseX1.value;
   const yAxis = AsseY1.value;
 
+  console.log("GR1:", xAxis, yAxis);
+
   const labels = data.map((item) => item[xAxis]);
   const values = data.map((item) => item[yAxis]);
 
@@ -305,6 +307,14 @@ function generateChart(data) {
   const yAxis1_grafico2 = configuracion_Grafico2.asse_Y1;
   const yAxis2_grafico2 = configuracion_Grafico2.asse_Y2;
   const yAxis3_grafico2 = configuracion_Grafico2.asse_Y3;
+
+  console.log(
+    "GR2:",
+    xAxis_grafico2,
+    yAxis1_grafico2,
+    yAxis2_grafico2,
+    yAxis3_grafico2
+  );
 
   const obtenerDatos_tabla = obtenerDatos();
 
@@ -349,7 +359,8 @@ function generateChart(data) {
   chartInstance = new Chart(ctx, {
     type: type_grafico1,
     data: {
-      labels: labels,
+      //labels: labels,
+      labels: valoresX_grafico2,
       datasets: [
         // Gráfico 1
         {
@@ -383,8 +394,8 @@ function generateChart(data) {
           label: " P.Min",
           data: valoresY2_grafico2,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
-          backgroundColor: colore_cop.value + "80",
-          borderColor: colore_cop.value,
+          backgroundColor: colore_pmin.value + "80",
+          borderColor: colore_pmin.value,
           borderWidth: 2,
           fill: false,
           xAxisID: "x2", // asse X2: segundo grafico
@@ -396,12 +407,12 @@ function generateChart(data) {
           label: " P.Max",
           data: valoresY3_grafico2,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
-          backgroundColor: colore_cop.value + "80",
-          borderColor: colore_cop.value,
+          backgroundColor: colore_pmax.value + "80",
+          borderColor: colore_pmax.value,
           borderWidth: 2,
           fill: false,
           xAxisID: "x2", // asse X2: segundo grafico
-          yAxisID: "y3", // asse Y2: segungo grafico
+          yAxisID: "y3", // asse Y3: segungo grafico
         },
       ],
     },
