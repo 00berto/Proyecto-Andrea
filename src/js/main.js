@@ -227,10 +227,18 @@ let columnas = [
   "Pot. Max [W]",
   "Pot. Min [W]",
 ];
+
+/*
 const configuracion_Grafico2 = {
   asse_X: columnas[1],
   asse_Y1: columnas[3],
   asse_Y2: columnas[4],
+};*/
+
+const configuracion_Grafico2 = {
+  asse_X: columnas.indexOf("COP"),
+  asse_Y1: columnas.indexOf("Pot. Max [W]"),
+  asse_Y2: columnas.indexOf("Pot. Min [W]"),
 };
 
 console.log("asseX GRAFICO 2:", configuracion_Grafico2.asse_X);
@@ -300,7 +308,7 @@ function generateChart(data) {
     (fila) => fila[yAxis2_grafico2]
   );
 
-  console.log("Valores de X grafico2:", valoresX_grafico2);
+  console.log("Valores de X2 grafico2:", valoresX_grafico2);
   console.log("Valores de Y1 grafico2:", valoresY1_grafico2);
   console.log("Valores de Y2 grafico2:", valoresY2_grafico2);
 
