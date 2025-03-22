@@ -458,9 +458,9 @@ function generateChart(data) {
           // Configuración eje Y grafico 1
 
           type: "linear", // Tipo de escala
-          beginAtZero: true,
+          beginAtZero: false,
           title: {
-            display: true,
+            display: false,
             text: yAxis, // Usa el valor seleccionado en AsseY1
           },
         },
@@ -469,7 +469,7 @@ function generateChart(data) {
         x2: {
           // Configuración del segundo eje X
           type: "linear",
-          position: "top", // Eje X2 en la parte superior
+          position: "bottom", // Eje X2 en la parte superior
 
           title: {
             display: false,
@@ -483,9 +483,9 @@ function generateChart(data) {
 
           type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
           //position: "left", // Posición del eje (<-)
-          beginAtZero: true,
+          beginAtZero: false,
           title: {
-            display: true,
+            display: false,
             text: yAxis1_grafico2,
           },
 
@@ -499,9 +499,9 @@ function generateChart(data) {
 
           type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
           //position: "right", // Posición del eje (->)
-          beginAtZero: true,
+          beginAtZero: false,
           title: {
-            display: true,
+            display: false,
             text: yAxis2_grafico2,
           },
 
@@ -514,9 +514,9 @@ function generateChart(data) {
 
           type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
           //position: "right", // Posición del eje (->)
-          beginAtZero: true,
+          beginAtZero: false,
           title: {
-            display: true,
+            display: false,
             text: yAxis2_grafico2,
           },
 
