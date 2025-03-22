@@ -95,9 +95,8 @@ archivoXLSL.addEventListener("change", function (event) {
     });
 
     invio.addEventListener("click", function () {
-      const chartType = document.getElementById("chartType").value; // Obtener el tipo de gráfico actual
       sheetData = getSheetData();
-      generateChart(sheetData.jsonData, chartType);
+      generateChart(sheetData.jsonData);
     });
   };
 
@@ -289,13 +288,15 @@ function generateChart(data) {
   const yAxis1_grafico2 = configuracion_Grafico2.asse_Y1;
   const yAxis2_grafico2 = configuracion_Grafico2.asse_Y2;
 
-  const valoresX_grafico2 = obtenerDatos().map((fila) => fila[xAxis_grafico2]);
+  const obtenerDatos_tabla = obtenerDatos();
 
-  const valoresY1_grafico2 = obtenerDatos().map(
+  const valoresX_grafico2 = obtenerDatos_tabla.map(
+    (fila) => fila[xAxis_grafico2]
+  );
+  const valoresY1_grafico2 = obtenerDatos_tabla.map(
     (fila) => fila[yAxis1_grafico2]
   );
-
-  const valoresY2_grafico2 = obtenerDatos().map(
+  const valoresY2_grafico2 = obtenerDatos_tabla.map(
     (fila) => fila[yAxis2_grafico2]
   );
 
@@ -321,11 +322,13 @@ function generateChart(data) {
 
   // Crear el gráfico
   chartInstance = new Chart(ctx, {
+    type: type_grafico1,
     data: {
       labels: labels,
       datasets: [
+        // Gráfico 1
         {
-          type: type_grafico1,
+          //type: type_grafico1,
           label: " Grafico Dispersione",
           data: values,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
@@ -336,9 +339,7 @@ function generateChart(data) {
           xAxisID: "x", // asse X primer grafico
           yAxisID: "y", // asse Y primer grafico
         },
-      ],
-
-      datasets: [
+        //Gráfico 2 (y1)
         {
           type: type_grafico2,
           label: " Grafico Linea",
@@ -348,9 +349,21 @@ function generateChart(data) {
           borderColor: colore2.value,
           borderWidth: 2,
           fill: false,
-          xAxisID: "x1", // asse X segundo grafico
-          yAxisID: "y1", // asse Y1 segungo grafico
-          yAxisID2: "y2", // asse Y2 segundo grafico
+          xAxisID: "x2", // asse X2: segundo grafico
+          yAxisID: "y1", // asse Y1: segungo grafico
+        },
+        //Gráfico 2 (y2)
+        {
+          type: type_grafico2,
+          label: " Grafico Linea",
+          data: valoresX_grafico2,
+          //backgroundColor: "rgba(75, 192, 192, 0.5)",
+          backgroundColor: colore2.value + "80",
+          borderColor: colore2.value,
+          borderWidth: 2,
+          fill: false,
+          xAxisID: "x2", // asse X2: segundo grafico
+          yAxisID: "y2", // asse Y2: segungo grafico
         },
       ],
     },
@@ -379,11 +392,13 @@ function generateChart(data) {
           },
         },
       },
-      scales: {
+      scale: {
         // Gráficos 1
 
         x: {
           // Configuración del eje X
+          type: "linear",
+          position: "bottom",
           title: {
             display: true,
             text: xAxis, // Usa el valor seleccionado en AsseX1
@@ -402,12 +417,16 @@ function generateChart(data) {
         },
 
         // Gráfico 2
-        x1: {
+        x2: {
           // Configuración del segundo eje X
+          type: "linear",
+          position: "top", // Eje X2 en la parte superior
+
           title: {
             display: false,
             text: xAxis_grafico2,
           },
+          grid: { drawOnChartArea: false }, // Evita superposición de líneas de cuadrícula
         },
 
         y1: {
