@@ -200,8 +200,8 @@
                     </div>
 
                     <div class="col-12 col-md-6 col-lg-4 mb-3">
-                        <label class="form-label" for="form-text">Colore </label>
-                        <select id="colore2" class="form-select form-select-lg">
+                        <label class="form-label" for="form-text">Colore COP </label>
+                        <select id="colore_cop" class="form-select form-select-lg">
                             <option value="black">Nero</option>
                             <option value="white">Bianco</option>
                             <option value="red">Rosso</option>
@@ -212,10 +212,10 @@
                             <option value="purple">Viola</option>
                         </select>
                     </div>
-                    <!--
+
                     <div class="col-12 col-md-6 col-lg-4 mb-3">
-                        <label class="form-label" for="form-text">Colore </label>
-                        <select id="colore2" class="form-select form-select-lg">
+                        <label class="form-label" for="form-text">Colore P.Min</label>
+                        <select id="colore_Pmin" class="form-select form-select-lg">
                             <option value="black">Nero</option>
                             <option value="white">Bianco</option>
                             <option value="red">Rosso</option>
@@ -225,55 +225,70 @@
                             <option value="blue">Blu</option>
                             <option value="purple">Viola</option>
                         </select>
-                    </div>-->
-                </div>
-            </div>
-
-            <hr>
-
-            <!-- GRAFICO GENERAL -->
-            <div class="container-fluid bg-info-light py-3">
-                <!--aspetto-->
-
-                <div class="row mx-auto d-flex align-items-end justify-content-center">
-                    <h4 class="col-12 text-center">Grafico </h4>
-                </div>
-                <class class="row mx-auto d-flex align-items-end justify-content-between">
+                    </div>
 
                     <div class="col-12 col-md-6 col-lg-4 mb-3">
-                        <input class="col-12  form-control form-control-lg" type="text" id="nomeGrafico"
-                            placeholder="Nome del Grafico">
-                    </div>
-
-                </class>
-
-                <div class="row mt-4 mx-auto d-flex">
-                    <div class="col-12 col-md-6 col-lg-6 mb-3">
-                        <button type="button" class="btn btn-dark btn-lg w-100" id="creaGraf">Crea
-                        </button>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-6 mb-3">
-                        <button type="button" class="btn btn-dark btn-lg w-100" id="download">Scarica
-                        </button>
+                        <label class="form-label" for="form-text">Colore P. Max </label>
+                        <select id="colore_Pmax" class="form-select form-select-lg">
+                            <option value="black">Nero</option>
+                            <option value="white">Bianco</option>
+                            <option value="red">Rosso</option>
+                            <option value="orange">Arancione</option>
+                            <option value="yellow">Giallo</option>
+                            <option value="green">Verde</option>
+                            <option value="blue">Blu</option>
+                            <option value="purple">Viola</option>
+                        </select>
                     </div>
                 </div>
-
-                <div class="container mt-4">
-                    <div class="card">
-                        <div class="card-header bg-dark text-white" id="tituloGrafico">
-                        </div>
-
-                        <div class="card-body">
-                            <div class="chart-container" style="position: relative; height:auto; width:100%;">
-                                <canvas id="myChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </form>
+    </div>
+
+    <hr>
+
+    <!-- GRAFICO GENERAL -->
+    <div class="container-fluid bg-info-light py-3">
+        <!--aspetto-->
+
+        <div class="row mx-auto d-flex align-items-end justify-content-center">
+            <h4 class="col-12 text-center">Grafico </h4>
+        </div>
+        <class class="row mx-auto d-flex align-items-end justify-content-between">
+
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                <input class="col-12  form-control form-control-lg" type="text" id="nomeGrafico"
+                    placeholder="Nome del Grafico">
+            </div>
+
+        </class>
+
+        <div class="row mt-4 mx-auto d-flex">
+            <div class="col-12 col-md-6 col-lg-6 mb-3">
+                <button type="button" class="btn btn-dark btn-lg w-100" id="creaGraf">Crea
+                </button>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-6 mb-3">
+                <button type="button" class="btn btn-dark btn-lg w-100" id="download">Scarica
+                </button>
+            </div>
+        </div>
+
+        <div class="container mt-4">
+            <div class="card">
+                <div class="card-header bg-dark text-white" id="tituloGrafico">
+                </div>
+
+                <div class="card-body">
+                    <div class="chart-container" style="position: relative; height:auto; width:100%;">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </form>
     </div>
 
     <footer class="container">

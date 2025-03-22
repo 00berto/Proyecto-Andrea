@@ -236,9 +236,10 @@ const configuracion_Grafico2 = {
 };*/
 
 const configuracion_Grafico2 = {
-  asse_X: columnas.indexOf("COP"),
-  asse_Y1: columnas.indexOf("Pot. Max [W]"),
-  asse_Y2: columnas.indexOf("Pot. Min [W]"),
+  asse_X2: columnas.indexOf("T. est. [°C]"),
+  asse_Y1: columnas.indexOf("COP"),
+  asse_Y2: columnas.indexOf("Pot. Max [W]"),
+  asse_Y3: columnas.indexOf("Pot. Min [W]"),
 };
 
 console.log("asseX GRAFICO 2:", configuracion_Grafico2.asse_X);
@@ -247,19 +248,27 @@ console.log("asseY2 GRAFICO 2:", configuracion_Grafico2.asse_Y2);
 
 // Función cambio color
 const colore = document.getElementById("colore");
-const colore2 = document.getElementById("colore2");
+const colore_cop = document.getElementById("colore_cop");
+const colore_pmin = document.getElementById("colore_Pmin");
+const colore_pmax = document.getElementById("colore_Pmax");
 
 let chartInstance; // almacen del grafico
 
 function UpdateColor() {
   const UpColore = colore.value;
-  const UpColore2 = colore2.value;
+  const UpColore_cop = colore_cop.value;
+  const UpColore_pmin = colore_pmin.value;
+  const UpColore_pmax = colore_pmax.value;
 
   if (chartInstance) {
     chartInstance.data.datasets[0].backgroundColor = UpColore;
     chartInstance.data.datasets[0].borderColor = UpColore;
-    chartInstance.data.datasets[1].backgroundColor = UpColore2;
-    chartInstance.data.datasets[1].borderColor = UpColore2;
+    chartInstance.data.datasets[1].backgroundColor = UpColore_cop;
+    chartInstance.data.datasets[1].borderColor = UpColore_cop;
+    chartInstance.data.datasets[2].backgroundColor = UpColore_pmin;
+    chartInstance.data.datasets[2].borderColor = UpColore_pmin;
+    chartInstance.data.datasets[3].backgroundColor = UpColore_pmax;
+    chartInstance.data.datasets[3].borderColor = UpColore_pmax;
     chartInstance.update();
   }
 }
@@ -292,9 +301,10 @@ function generateChart(data) {
   const values = data.map((item) => item[yAxis]);
 
   //Gráfico 2
-  const xAxis_grafico2 = configuracion_Grafico2.asse_X;
+  const xAxis_grafico2 = configuracion_Grafico2.asse_X2;
   const yAxis1_grafico2 = configuracion_Grafico2.asse_Y1;
   const yAxis2_grafico2 = configuracion_Grafico2.asse_Y2;
+  const yAxis3_grafico2 = configuracion_Grafico2.asse_Y3;
 
   const obtenerDatos_tabla = obtenerDatos();
 
@@ -307,10 +317,17 @@ function generateChart(data) {
   const valoresY2_grafico2 = obtenerDatos_tabla.map(
     (fila) => fila[yAxis2_grafico2]
   );
+  const valoresY3_grafico2 = obtenerDatos_tabla.map(
+    (fila) => fila[yAxis3_grafico2]
+  );
 
-  console.log("Valores de X2 grafico2:", valoresX_grafico2);
-  console.log("Valores de Y1 grafico2:", valoresY1_grafico2);
-  console.log("Valores de Y2 grafico2:", valoresY2_grafico2);
+  console.log(
+    "Valores del grafico2:",
+    valoresX_grafico2,
+    valoresY1_grafico2,
+    valoresY2_grafico2,
+    valoresY3_grafico2
+  );
 
   // Nombre General del gráfico
   const nomeGrafico = document.getElementById("nomeGrafico").value;
@@ -350,11 +367,11 @@ function generateChart(data) {
         //Gráfico 2 (y1)
         {
           type: type_grafico2,
-          label: " Grafico Linea",
-          data: valoresX_grafico2,
+          label: " Cop",
+          data: valoresY1_grafico2,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
-          backgroundColor: colore2.value + "80",
-          borderColor: colore2.value,
+          backgroundColor: colore_cop.value + "80",
+          borderColor: colore_cop.value,
           borderWidth: 2,
           fill: false,
           xAxisID: "x2", // asse X2: segundo grafico
@@ -363,15 +380,28 @@ function generateChart(data) {
         //Gráfico 2 (y2)
         {
           type: type_grafico2,
-          label: " Grafico Linea",
-          data: valoresX_grafico2,
+          label: " P.Min",
+          data: valoresY2_grafico2,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
-          backgroundColor: colore2.value + "80",
-          borderColor: colore2.value,
+          backgroundColor: colore_cop.value + "80",
+          borderColor: colore_cop.value,
           borderWidth: 2,
           fill: false,
           xAxisID: "x2", // asse X2: segundo grafico
           yAxisID: "y2", // asse Y2: segungo grafico
+        },
+        //Gráfico 2 (y3)
+        {
+          type: type_grafico2,
+          label: " P.Max",
+          data: valoresY3_grafico2,
+          //backgroundColor: "rgba(75, 192, 192, 0.5)",
+          backgroundColor: colore_cop.value + "80",
+          borderColor: colore_cop.value,
+          borderWidth: 2,
+          fill: false,
+          xAxisID: "x2", // asse X2: segundo grafico
+          yAxisID: "y3", // asse Y2: segungo grafico
         },
       ],
     },
@@ -441,7 +471,7 @@ function generateChart(data) {
           // Configuración del primer eje Y del segundo gráfico
 
           type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
-          position: "left", // Posición del eje (<-)
+          //position: "left", // Posición del eje (<-)
           beginAtZero: true,
           title: {
             display: true,
@@ -457,7 +487,22 @@ function generateChart(data) {
           // Configuración del segundo eje Y del segundo grafico
 
           type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
-          position: "right", // Posición del eje (->)
+          //position: "right", // Posición del eje (->)
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: yAxis2_grafico2,
+          },
+
+          grid: {
+            drawOnChartArea: false, // Evita que la grid del segundo eje se superponga al primero
+          },
+        },
+        y3: {
+          // Configuración del segundo eje Y del segundo grafico
+
+          type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
+          //position: "right", // Posición del eje (->)
           beginAtZero: true,
           title: {
             display: true,
@@ -474,7 +519,7 @@ function generateChart(data) {
 }
 
 colore.addEventListener("change", UpdateColor);
-colore2.addEventListener("change", UpdateColor);
+colore_cop.addEventListener("change", UpdateColor);
 
 download.addEventListener("click", () => {
   if (chartInstance) {
