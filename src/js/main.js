@@ -321,6 +321,7 @@ function generateChart(data) {
   const valoresX_grafico2 = obtenerDatos_tabla.map(
     (fila) => fila[xAxis_grafico2]
   );
+
   const valoresY1_grafico2 = obtenerDatos_tabla.map(
     (fila) => fila[yAxis1_grafico2]
   );
@@ -330,6 +331,11 @@ function generateChart(data) {
   const valoresY3_grafico2 = obtenerDatos_tabla.map(
     (fila) => fila[yAxis3_grafico2]
   );
+
+  const dictY1_grafico2 = valoresX_grafico2.map((key, index) => ({
+    key: key,
+    value: valoresY1_grafico2[index],
+  }));
 
   console.log(
     "Valores del grafico1",
@@ -382,7 +388,7 @@ function generateChart(data) {
         {
           type: type_grafico2,
           label: " Cop",
-          data: valoresY1_grafico2,
+          data: dictY1_grafico2,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
           backgroundColor: colore_cop.value + "80",
           borderColor: colore_cop.value,
@@ -444,7 +450,7 @@ function generateChart(data) {
           },
         },
       },
-      scale: {
+      scales: {
         // Gráficos 1
 
         x: {
