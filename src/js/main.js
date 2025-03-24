@@ -332,19 +332,19 @@ function generateChart(data) {
     (fila) => fila[yAxis3_grafico2]
   );
 
-  const dictY1_grafico2 = valoresX_grafico2.map((key, index) => ({
-    key: key,
-    value: valoresY1_grafico2[index],
+  const dictY1_grafico2 = valoresX_grafico2.map((x, i) => ({
+    x: x,
+    y: valoresY1_grafico2[i],
   }));
 
-  const dictY2_grafico2 = valoresX_grafico2.map((key, index) => ({
-    key: key,
-    value: valoresY2_grafico2[index],
+  const dictY2_grafico2 = valoresX_grafico2.map((x, i) => ({
+    x: x,
+    y: valoresY2_grafico2[i],
   }));
 
-  const dictY3_grafico2 = valoresX_grafico2.map((key, index) => ({
-    key: key,
-    value: valoresY3_grafico2[index],
+  const dictY3_grafico2 = valoresX_grafico2.map((x, i) => ({
+    x: x,
+    y: valoresY3_grafico2[i],
   }));
 
   console.log(
