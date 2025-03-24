@@ -355,7 +355,11 @@ function generateChart(data) {
     valoresX_grafico2,
     valoresY1_grafico2,
     valoresY2_grafico2,
-    valoresY3_grafico2
+    valoresY3_grafico2,
+    "Valores de los Dict",
+    dictY1_grafico2,
+    dictY2_grafico2,
+    dictY3_grafico2
   );
 
   // Nombre General del gráfico
