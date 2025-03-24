@@ -337,6 +337,16 @@ function generateChart(data) {
     value: valoresY1_grafico2[index],
   }));
 
+  const dictY2_grafico2 = valoresX_grafico2.map((key, index) => ({
+    key: key,
+    value: valoresY2_grafico2[index],
+  }));
+
+  const dictY3_grafico2 = valoresX_grafico2.map((key, index) => ({
+    key: key,
+    value: valoresY3_grafico2[index],
+  }));
+
   console.log(
     "Valores del grafico1",
     labels,
@@ -401,7 +411,7 @@ function generateChart(data) {
         {
           type: type_grafico2,
           label: " P.Min",
-          data: valoresY2_grafico2,
+          data: dictY2_grafico2,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
           backgroundColor: colore_pmin.value + "80",
           borderColor: colore_pmin.value,
@@ -414,7 +424,7 @@ function generateChart(data) {
         {
           type: type_grafico2,
           label: " P.Max",
-          data: valoresY3_grafico2,
+          data: dictY3_grafico2,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
           backgroundColor: colore_pmax.value + "80",
           borderColor: colore_pmax.value,
