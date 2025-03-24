@@ -332,6 +332,9 @@ function generateChart(data) {
   );
 
   console.log(
+    "Valores del grafico1",
+    labels,
+    values,
     "Valores del grafico2:",
     valoresX_grafico2,
     valoresY1_grafico2,
@@ -360,7 +363,7 @@ function generateChart(data) {
     type: type_grafico1,
     data: {
       //labels: labels,
-      labels: valoresX_grafico2,
+      labels: labels,
       datasets: [
         // Gráfico 1
         {
@@ -463,6 +466,9 @@ function generateChart(data) {
             display: false,
             text: yAxis, // Usa el valor seleccionado en AsseY1
           },
+          ticks: {
+            display: false,
+          },
         },
 
         // Gráfico 2
@@ -474,6 +480,9 @@ function generateChart(data) {
           title: {
             display: false,
             text: xAxis_grafico2,
+          },
+          ticks: {
+            display: false,
           },
           grid: { drawOnChartArea: false }, // Evita superposición de líneas de cuadrícula
         },
@@ -487,6 +496,9 @@ function generateChart(data) {
           title: {
             display: false,
             text: yAxis1_grafico2,
+          },
+          ticks: {
+            display: false,
           },
 
           grid: {
@@ -504,6 +516,9 @@ function generateChart(data) {
             display: false,
             text: yAxis2_grafico2,
           },
+          ticks: {
+            display: false,
+          },
 
           grid: {
             drawOnChartArea: false, // Evita que la grid del segundo eje se superponga al primero
@@ -518,6 +533,9 @@ function generateChart(data) {
           title: {
             display: false,
             text: yAxis2_grafico2,
+          },
+          ticks: {
+            display: false,
           },
 
           grid: {
