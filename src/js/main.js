@@ -523,7 +523,7 @@ function generateChart(data) {
           ticks: {
             display: false,
           },
-          reverse: true,
+          //reverse: true,
           grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
         },
 
