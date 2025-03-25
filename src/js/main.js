@@ -363,9 +363,9 @@ function generateChart(data) {
   );
 
   //min max
-  let min = [...valoresX_grafico2].sort((a, b) => a - b);
-  let max = [...valoresX_grafico2].sort((a, b) => b - a);
-  console.log("min,max", min[0], max[0]);
+  let min = Math.min(...valoresX_grafico2);
+  let max = Math.max(...valoresX_grafico2);
+  console.log("min,max", min, max);
 
   // Nombre General del gráfico
   const nomeGrafico = document.getElementById("nomeGrafico").value;
