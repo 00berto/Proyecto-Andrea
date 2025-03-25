@@ -362,6 +362,11 @@ function generateChart(data) {
     dictY3_grafico2
   );
 
+  //min max
+  let min = valoresX_grafico2.sort((a, b) => a - b);
+  let max = valoresX_grafico2.sort((a, b) => b - a);
+  console.log("min,max", min[0], max[0]);
+
   // Nombre General del gráfico
   const nomeGrafico = document.getElementById("nomeGrafico").value;
 
