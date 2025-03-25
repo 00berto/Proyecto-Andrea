@@ -396,8 +396,7 @@ function generateChart(data) {
           //type: type_grafico1,
           label: " Grafico Dispersione",
           data: values,
-          //backgroundColor: "rgba(75, 192, 192, 0.5)",
-          backgroundColor: colore.value + "80",
+          backgroundColor: colore.value,
           borderColor: colore.value,
           borderWidth: 2,
           fill: false,
@@ -409,8 +408,7 @@ function generateChart(data) {
           type: type_grafico2,
           label: " Cop",
           data: dictY1_grafico2,
-          //backgroundColor: "rgba(75, 192, 192, 0.5)",
-          backgroundColor: colore_cop.value, // + "80",
+          backgroundColor: colore_cop.value,
           borderColor: colore_cop.value,
           borderWidth: 2,
           fill: false,
@@ -422,8 +420,7 @@ function generateChart(data) {
           type: type_grafico2,
           label: " P.Min",
           data: dictY2_grafico2,
-          //backgroundColor: "rgba(75, 192, 192, 0.5)",
-          backgroundColor: colore_pmin.value, // + "80",
+          backgroundColor: colore_pmin.value,
           borderColor: colore_pmin.value,
           borderWidth: 2,
           fill: false,
@@ -435,8 +432,7 @@ function generateChart(data) {
           type: type_grafico2,
           label: " P.Max",
           data: dictY3_grafico2,
-          //backgroundColor: "rgba(75, 192, 192, 0.5)",
-          backgroundColor: colore_pmax.value, // + "80",
+          backgroundColor: colore_pmax.value,
           borderColor: colore_pmax.value,
           borderWidth: 2,
           fill: false,
@@ -511,7 +507,7 @@ function generateChart(data) {
           ticks: {
             display: false,
           },
-          grid: { drawOnChartArea: false }, // Evita superposición de líneas de cuadrícula
+          grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
         },
 
         y1: {
@@ -527,10 +523,8 @@ function generateChart(data) {
           ticks: {
             display: false,
           },
-
-          grid: {
-            drawOnChartArea: false, // Evita que la grid del segundo eje se superponga al primero
-          },
+          reverse: true,
+          grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
         },
 
         y2: {
@@ -548,9 +542,7 @@ function generateChart(data) {
             display: false,
           },
 
-          grid: {
-            drawOnChartArea: false, // Evita que la grid del segundo eje se superponga al primero
-          },
+          grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
         },
         y3: {
           // Configuración del segundo eje Y del segundo grafico
