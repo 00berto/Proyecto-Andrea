@@ -363,9 +363,10 @@ function generateChart(data) {
   );
 
   //min max
+  /*
   let min = Math.min(...valoresX_grafico2);
   let max = Math.max(...valoresX_grafico2);
-  console.log("min,max", min, max);
+  console.log("min,max", min, max);*/
 
   // Nombre General del gráfico
   const nomeGrafico = document.getElementById("nomeGrafico").value;
@@ -409,7 +410,7 @@ function generateChart(data) {
           label: " Cop",
           data: dictY1_grafico2,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
-          backgroundColor: colore_cop.value + "80",
+          backgroundColor: colore_cop.value, // + "80",
           borderColor: colore_cop.value,
           borderWidth: 2,
           fill: false,
@@ -422,7 +423,7 @@ function generateChart(data) {
           label: " P.Min",
           data: dictY2_grafico2,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
-          backgroundColor: colore_pmin.value + "80",
+          backgroundColor: colore_pmin.value, // + "80",
           borderColor: colore_pmin.value,
           borderWidth: 2,
           fill: false,
@@ -435,7 +436,7 @@ function generateChart(data) {
           label: " P.Max",
           data: dictY3_grafico2,
           //backgroundColor: "rgba(75, 192, 192, 0.5)",
-          backgroundColor: colore_pmax.value + "80",
+          backgroundColor: colore_pmax.value, // + "80",
           borderColor: colore_pmax.value,
           borderWidth: 2,
           fill: false,
@@ -491,8 +492,7 @@ function generateChart(data) {
             display: false,
             text: yAxis, // Usa el valor seleccionado en AsseY1
           },
-          min: min,
-          max: max,
+
           ticks: {
             display: false,
           },
@@ -527,8 +527,7 @@ function generateChart(data) {
           ticks: {
             display: false,
           },
-          min: min,
-          max: max,
+
           grid: {
             drawOnChartArea: false, // Evita que la grid del segundo eje se superponga al primero
           },
@@ -544,13 +543,11 @@ function generateChart(data) {
             display: false,
             text: yAxis2_grafico2,
           },
-          min: min,
-          max: max,
+
           ticks: {
             display: false,
           },
-          min: min,
-          max: max,
+
           grid: {
             drawOnChartArea: false, // Evita que la grid del segundo eje se superponga al primero
           },
@@ -568,8 +565,6 @@ function generateChart(data) {
           ticks: {
             display: false,
           },
-          min: min,
-          max: max,
 
           grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
         },
