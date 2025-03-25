@@ -491,6 +491,8 @@ function generateChart(data) {
             display: false,
             text: yAxis, // Usa el valor seleccionado en AsseY1
           },
+          min: min,
+          max: max,
           ticks: {
             display: false,
           },
@@ -525,7 +527,8 @@ function generateChart(data) {
           ticks: {
             display: false,
           },
-
+          min: min,
+          max: max,
           grid: {
             drawOnChartArea: false, // Evita que la grid del segundo eje se superponga al primero
           },
@@ -541,10 +544,13 @@ function generateChart(data) {
             display: false,
             text: yAxis2_grafico2,
           },
+          min: min,
+          max: max,
           ticks: {
             display: false,
           },
-
+          min: min,
+          max: max,
           grid: {
             drawOnChartArea: false, // Evita que la grid del segundo eje se superponga al primero
           },
@@ -557,15 +563,15 @@ function generateChart(data) {
           beginAtZero: false,
           title: {
             display: false,
-            text: yAxis2_grafico2,
+            text: yAxis3_grafico2,
           },
           ticks: {
             display: false,
           },
+          min: min,
+          max: max,
 
-          grid: {
-            drawOnChartArea: false, // Evita que la grid del segundo eje se superponga al primero
-          },
+          grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
         },
       },
     },
