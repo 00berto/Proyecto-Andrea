@@ -1,7 +1,6 @@
 // Import CSS
 import "../scss/styles.scss";
 import "../scss/styles.css";
-import { offset } from "@popperjs/core";
 
 const invio = document.getElementById("creaGraf");
 const visual = document.getElementById("cargaFile");
@@ -548,7 +547,7 @@ function generateChart(data) {
           beginAtZero: false,
           suggestedMin: minY2 - 0.1,
           suggestedMax: maxY2 + 0.1,
-          offset: true,
+          stacked: true,
           title: {
             display: false,
             text: yAxis2_grafico2,
@@ -568,7 +567,7 @@ function generateChart(data) {
           beginAtZero: false,
           suggestedMin: minY3 - 0.1,
           suggestedMax: maxY3 + 0.1,
-          offset: true,
+          stacked: true,
           title: {
             display: false,
             text: yAxis3_grafico2,
