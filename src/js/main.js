@@ -405,8 +405,10 @@ function generateChart(data) {
         },
         //Gráfico 2 (y1)
         {
-          type: type_grafico2,
+          type: type_grafico1,
+          showLine: true,
           label: " Cop",
+          pointStyle: "triangle",
           data: dictY1_grafico2,
           backgroundColor: colore_cop.value,
           borderColor: colore_cop.value,
@@ -417,8 +419,10 @@ function generateChart(data) {
         },
         //Gráfico 2 (y2)
         {
-          type: type_grafico2,
+          type: type_grafico1,
+          showLine: true,
           label: " P.Min",
+          pointStyle: "cross",
           data: dictY2_grafico2,
           backgroundColor: colore_pmin.value,
           borderColor: colore_pmin.value,
@@ -429,8 +433,10 @@ function generateChart(data) {
         },
         //Gráfico 2 (y3)
         {
-          type: type_grafico2,
+          type: type_grafico1,
+          showLine: true,
           label: " P.Max",
+          pointStyle: "star",
           data: dictY3_grafico2,
           backgroundColor: colore_pmax.value,
           borderColor: colore_pmax.value,
