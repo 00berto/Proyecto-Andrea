@@ -297,7 +297,7 @@ function generateChart(data) {
   const xAxis = AsseX1.value;
   const yAxis = AsseY1.value;
 
-  console.log("GR1:", xAxis, yAxis);
+  console.log("\nGR1:\n", xAxis, yAxis);
 
   const labels = data.map((item) => item[xAxis]);
   const values = data.map((item) => item[yAxis]);
@@ -309,7 +309,7 @@ function generateChart(data) {
   const yAxis3_grafico2 = configuracion_Grafico2.asse_Y3;
 
   console.log(
-    "GR2:",
+    "\nGR2:\n",
     xAxis_grafico2,
     yAxis1_grafico2,
     yAxis2_grafico2,
@@ -332,7 +332,14 @@ function generateChart(data) {
     (fila) => fila[yAxis3_grafico2]
   );
 
-  const dictY1_grafico2 = [...valoresX_grafico2].map((x, i) => ({
+  const dictsGrafico2 = valoresX_grafico2.map((x, i) => ({
+    x,
+    y1: valoresY1_grafico2[i] ?? 0,
+    y2: valoresY2_grafico2[i] ?? 0,
+    y3: valoresY3_grafico2[i] ?? 0,
+  }));
+
+  /*const dictY1_grafico2 = [...valoresX_grafico2].map((x, i) => ({
     x: x,
     y: valoresY1_grafico2[i],
   }));
@@ -345,18 +352,18 @@ function generateChart(data) {
   const dictY3_grafico2 = [...valoresX_grafico2].map((x, i) => ({
     x: x,
     y: valoresY3_grafico2[i],
-  }));
+  }));*/
 
   console.log(
-    "Valores del grafico1",
+    "\nValores del grafico1\n",
     labels,
     values,
-    "Valores del grafico2:",
+    "\nValores del grafico2:\n",
     valoresX_grafico2,
     valoresY1_grafico2,
     valoresY2_grafico2,
     valoresY3_grafico2,
-    "Valores de los Dict",
+    "\nValores de los Dict\n",
     dictY1_grafico2,
     dictY2_grafico2,
     dictY3_grafico2
@@ -403,13 +410,15 @@ function generateChart(data) {
           xAxisID: "x", // asse X primer grafico
           yAxisID: "y", // asse Y primer grafico
         },
+
         //Gráfico 2 (y1)
         {
           type: type_grafico1,
           showLine: true,
           label: " Cop",
           pointStyle: "triangle",
-          data: dictY1_grafico2,
+          //data: dictY1_grafico2,
+          data: dictsGrafico2.map(({ x, y1 }) => ({ x, y: y1 })),
           backgroundColor: colore_cop.value,
           borderColor: colore_cop.value,
           borderWidth: 2,
@@ -423,7 +432,8 @@ function generateChart(data) {
           showLine: true,
           label: " P.Min",
           pointStyle: "cross",
-          data: dictY2_grafico2,
+          //data: dictY2_grafico2,
+          data: dictsGrafico2.map(({ x, y2 }) => ({ x, y: y2 })),
           backgroundColor: colore_pmin.value,
           borderColor: colore_pmin.value,
           borderWidth: 2,
@@ -437,7 +447,8 @@ function generateChart(data) {
           showLine: true,
           label: " P.Max",
           pointStyle: "star",
-          data: dictY3_grafico2,
+          //data: dictY3_grafico2,
+          data: dictsGrafico2.map(({ x, y3 }) => ({ x, y: y3 })),
           backgroundColor: colore_pmax.value,
           borderColor: colore_pmax.value,
           borderWidth: 2,
