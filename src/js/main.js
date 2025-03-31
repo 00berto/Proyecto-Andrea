@@ -527,17 +527,16 @@ function generateChart(data) {
           type: "logarithmic",
           position: "left", // Posición del eje (<-)
           beginAtZero: false,
-          suggestedMin: minY1 - 1, // Ajuste dinámico con un pequeño margen
-          suggestedMax: maxY1 + 1,
+          suggestedMin: minY1, // Ajuste dinámico con un pequeño margen
+          suggestedMax: maxY1,
           offset: true,
           title: {
             display: false,
             text: yAxis1_grafico2,
           },
           ticks: {
-            display: false,
+            display: true,
           },
-          //reverse: true,
           grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
         },
 
@@ -548,8 +547,8 @@ function generateChart(data) {
           type: "logarithmic",
           position: "right", // Posición del eje (->)
           beginAtZero: false,
-          suggestedMin: minY2 - 1,
-          suggestedMax: maxY2 + 1,
+          suggestedMin: minY2,
+          suggestedMax: maxY2,
           stacked: false,
           title: {
             display: false,
@@ -557,7 +556,7 @@ function generateChart(data) {
           },
 
           ticks: {
-            display: false,
+            display: true,
           },
 
           grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
@@ -568,15 +567,15 @@ function generateChart(data) {
           type: "logarithmic", // Tipo de escala (puedes ajustarlo si es necesario)
           position: "right", // Posición del eje (->)
           beginAtZero: false,
-          suggestedMin: minY3 - 1,
-          suggestedMax: maxY3 + 1,
+          suggestedMin: minY3,
+          suggestedMax: maxY3,
           stacked: false,
           title: {
             display: false,
             text: yAxis3_grafico2,
           },
           ticks: {
-            display: false,
+            display: true,
           },
 
           grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
