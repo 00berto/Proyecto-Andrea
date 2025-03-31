@@ -249,16 +249,16 @@ console.log("asseY2 GRAFICO 2:", configuracion_Grafico2.asse_Y2);
 // Función cambio color
 const colore = document.getElementById("colore");
 const colore_cop = document.getElementById("colore_cop");
-const colore_pmin = document.getElementById("colore_Pmin");
-const colore_pmax = document.getElementById("colore_Pmax");
+const colore_Pmax = document.getElementById("colore_Pmin");
+const colore_Pmin = document.getElementById("colore_Pmax");
 
 let chartInstance; // almacen del grafico
 
 function UpdateColor() {
   const UpColore = colore.value;
   const UpColore_cop = colore_cop.value;
-  const UpColore_pmin = colore_pmin.value;
-  const UpColore_pmax = colore_pmax.value;
+  const UpColore_pmin = colore_Pmax.value;
+  const UpColore_pmax = colore_Pmin.value;
 
   if (chartInstance) {
     chartInstance.data.datasets[0].backgroundColor = UpColore;
@@ -375,6 +375,15 @@ function generateChart(data) {
   let max = Math.max(...valoresX_grafico2);
   console.log("min,max", min, max);*/
 
+  const minY1 = Math.min(...valoresY1_grafico2);
+  const maxY1 = Math.max(...valoresY1_grafico2);
+
+  const minY2 = Math.min(...valoresY2_grafico2);
+  const maxY2 = Math.max(...valoresY2_grafico2);
+
+  const minY3 = Math.min(...valoresY3_grafico2);
+  const maxY3 = Math.max(...valoresY3_grafico2);
+
   // Nombre General del gráfico
   const nomeGrafico = document.getElementById("nomeGrafico").value;
 
@@ -430,12 +439,12 @@ function generateChart(data) {
         {
           type: type_grafico1,
           showLine: true,
-          label: " P.Min",
+          label: " P.Max",
           pointStyle: "cross",
           //data: dictY2_grafico2,
           data: dictsGrafico2.map(({ x, y2 }) => ({ x, y: y2 })),
-          backgroundColor: colore_pmin.value,
-          borderColor: colore_pmin.value,
+          backgroundColor: colore_Pmax.value,
+          borderColor: colore_Pmax.value,
           borderWidth: 2,
           fill: false,
           xAxisID: "x2", // asse X2: segundo grafico
@@ -445,12 +454,12 @@ function generateChart(data) {
         {
           type: type_grafico1,
           showLine: true,
-          label: " P.Max",
+          label: " P.Min",
           pointStyle: "star",
           //data: dictY3_grafico2,
           data: dictsGrafico2.map(({ x, y3 }) => ({ x, y: y3 })),
-          backgroundColor: colore_pmax.value,
-          borderColor: colore_pmax.value,
+          backgroundColor: colore_Pmin.value,
+          borderColor: colore_Pmin.value,
           borderWidth: 2,
           fill: false,
           xAxisID: "x2", // asse X2: segundo grafico
@@ -515,7 +524,7 @@ function generateChart(data) {
         x2: {
           // Configuración del segundo eje X
           type: "linear",
-          position: "bottom", // Eje X2 en la parte superior
+          position: "bottom",
 
           title: {
             display: false,
@@ -533,6 +542,8 @@ function generateChart(data) {
           type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
           //position: "left", // Posición del eje (<-)
           beginAtZero: false,
+          suggestedMin: minY1 - 0.1, // Ajuste dinámico con un pequeño margen
+          suggestedMax: maxY1 + 0.1,
           title: {
             display: false,
             text: yAxis1_grafico2,
@@ -550,6 +561,8 @@ function generateChart(data) {
           type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
           //position: "right", // Posición del eje (->)
           beginAtZero: false,
+          suggestedMin: minY2 - 100,
+          suggestedMax: maxY2 + 100,
           title: {
             display: false,
             text: yAxis2_grafico2,
@@ -567,6 +580,8 @@ function generateChart(data) {
           type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
           //position: "right", // Posición del eje (->)
           beginAtZero: false,
+          suggestedMin: minY3 - 50,
+          suggestedMax: maxY3 + 50,
           title: {
             display: false,
             text: yAxis3_grafico2,
