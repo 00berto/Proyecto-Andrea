@@ -544,6 +544,7 @@ function generateChart(data) {
           beginAtZero: false,
           suggestedMin: minY1 - 0.1, // Ajuste dinámico con un pequeño margen
           suggestedMax: maxY1 + 0.1,
+          offset: true,
           title: {
             display: false,
             text: yAxis1_grafico2,
@@ -563,6 +564,7 @@ function generateChart(data) {
           beginAtZero: false,
           suggestedMin: minY2 - 0.1,
           suggestedMax: maxY2 + 0.1,
+          stacked: false,
           title: {
             display: false,
             text: yAxis2_grafico2,
@@ -582,6 +584,7 @@ function generateChart(data) {
           beginAtZero: false,
           suggestedMin: minY3 - 0.1,
           suggestedMax: maxY3 + 0.1,
+          stacked: false,
           title: {
             display: false,
             text: yAxis3_grafico2,
