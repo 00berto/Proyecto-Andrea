@@ -527,8 +527,8 @@ function generateChart(data) {
           type: "logarithmic",
           position: "left", // Posición del eje (<-)
           beginAtZero: false,
-          suggestedMin: minY1 - 0.1, // Ajuste dinámico con un pequeño margen
-          suggestedMax: maxY1 + 0.1,
+          suggestedMin: minY1 - 1, // Ajuste dinámico con un pequeño margen
+          suggestedMax: maxY1 + 1,
           offset: true,
           title: {
             display: false,
@@ -548,8 +548,8 @@ function generateChart(data) {
           type: "logarithmic",
           position: "right", // Posición del eje (->)
           beginAtZero: false,
-          suggestedMin: minY2 - 0.1,
-          suggestedMax: maxY2 + 0.1,
+          suggestedMin: minY2 - 1,
+          suggestedMax: maxY2 + 1,
           stacked: false,
           title: {
             display: false,
@@ -565,11 +565,11 @@ function generateChart(data) {
         y3: {
           // Configuración del segundo eje Y del segundo grafico
 
-          type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
+          type: "logarithmic", // Tipo de escala (puedes ajustarlo si es necesario)
           position: "right", // Posición del eje (->)
           beginAtZero: false,
-          suggestedMin: minY3 - 0.1,
-          suggestedMax: maxY3 + 0.1,
+          suggestedMin: minY3 - 1,
+          suggestedMax: maxY3 + 1,
           stacked: false,
           title: {
             display: false,
