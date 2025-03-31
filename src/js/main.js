@@ -540,7 +540,7 @@ function generateChart(data) {
           // Configuración del primer eje Y del segundo gráfico
 
           type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
-          //position: "left", // Posición del eje (<-)
+          position: "left", // Posición del eje (<-)
           beginAtZero: false,
           suggestedMin: minY1 - 0.1, // Ajuste dinámico con un pequeño margen
           suggestedMax: maxY1 + 0.1,
@@ -559,10 +559,10 @@ function generateChart(data) {
           // Configuración del segundo eje Y del segundo grafico
 
           type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
-          //position: "right", // Posición del eje (->)
+          position: "right", // Posición del eje (->)
           beginAtZero: false,
-          suggestedMin: minY2 - 100,
-          suggestedMax: maxY2 + 100,
+          suggestedMin: minY2 - 0.1,
+          suggestedMax: maxY2 + 0.1,
           title: {
             display: false,
             text: yAxis2_grafico2,
@@ -578,10 +578,10 @@ function generateChart(data) {
           // Configuración del segundo eje Y del segundo grafico
 
           type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
-          //position: "right", // Posición del eje (->)
+          position: "right", // Posición del eje (->)
           beginAtZero: false,
-          suggestedMin: minY3 - 50,
-          suggestedMax: maxY3 + 50,
+          suggestedMin: minY3 - 0.1,
+          suggestedMax: maxY3 + 0.1,
           title: {
             display: false,
             text: yAxis3_grafico2,
