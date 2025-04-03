@@ -354,10 +354,10 @@ function generateChart(data) {
 
   //min max
 
-  const minX_excel = Math.min(...labels);
-  const minY_excel = Math.min(...values);
-  const maxX_excel = Math.min(...labels);
-  const maxY_excel = Math.min(...values);
+  const minX_excel = Math.min(...labels.map(parseFloat));
+  const minY_excel = Math.min(...values.map(parseFloat));
+  const maxX_excel = Math.min(...labels.map(parseFloat));
+  const maxY_excel = Math.min(...values.map(parseFloat));
 
   console.log("\nmin X Y Excel", "x", minX_excel, "y", minY_excel);
   console.log("\nmax X Y Excel", "x", maxX_excel, "y", maxY_excel);
@@ -387,68 +387,86 @@ function generateChart(data) {
   let type_grafico1 = "scatter";
   let type_grafico2 = "line";
 
+  // opiciones comunes Grafico
+
+  let opciones_comunesAtodos = {
+    backgroundColor: colore_cop.value,
+    borderColor: colore_cop.value,
+    borderWidth: 2,
+    fill: false,
+  };
+
+  let scalesX_comun = {
+    min: minX_excel,
+    max: maxX_excel,
+    type: "linear",
+    position: "bottom",
+  };
+
+  let scalesY_comun = {
+    //type: "logarithmic",
+    type: "linear",
+    position: "right", // Posición del eje (->)
+    ticks: { display: true },
+    beginAtZero: false,
+    min: minY_excel,
+    max: maxY_excel,
+    stacked: false,
+    grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
+  };
+
+  let y_comun = {
+    type: type_grafico1,
+    showLine: true,
+  };
+
   // Crear el gráfico
   chartInstance = new Chart(ctx, {
     type: type_grafico1,
     data: {
-      //labels: labels,
       labels: labels,
       datasets: [
         // Gráfico 1
         {
-          //type: type_grafico1,
           label: " Grafico Dispersione",
           data: values,
-          backgroundColor: colore.value,
-          borderColor: colore.value,
-          borderWidth: 2,
-          fill: false,
+          ...opciones_comunesAtodos,
           xAxisID: "x", // asse X primer grafico
           yAxisID: "y", // asse Y primer grafico
         },
 
         //Gráfico 2 (y1)
         {
-          type: type_grafico1,
-          showLine: true,
+          ...y_comun,
+          ...opciones_comunesAtodos,
           label: " Cop",
           pointStyle: "triangle",
           //data: dictY1_grafico2,
           data: dictsGrafico2.map(({ x, y1 }) => ({ x, y: y1 })),
-          backgroundColor: colore_cop.value,
-          borderColor: colore_cop.value,
-          borderWidth: 2,
-          fill: false,
           xAxisID: "x2", // asse X2: segundo grafico
           yAxisID: "y1", // asse Y1: segungo grafico
         },
+
         //Gráfico 2 (y2)
         {
-          type: type_grafico1,
-          showLine: true,
+          ...y_comun,
+          ...opciones_comunesAtodos,
           label: " P.Max",
           pointStyle: "cross",
           //data: dictY2_grafico2,
           data: dictsGrafico2.map(({ x, y2 }) => ({ x, y: y2 })),
-          backgroundColor: colore_Pmax.value,
-          borderColor: colore_Pmax.value,
-          borderWidth: 2,
-          fill: false,
           xAxisID: "x2", // asse X2: segundo grafico
           yAxisID: "y2", // asse Y2: segungo grafico
         },
+
         //Gráfico 2 (y3)
         {
-          type: type_grafico1,
-          showLine: true,
+          ...y_comun,
+          ...opciones_comunesAtodos,
           label: " P.Min",
           pointStyle: "dash",
           //data: dictY3_grafico2,
           data: dictsGrafico2.map(({ x, y3 }) => ({ x, y: y3 })),
-          backgroundColor: colore_Pmin.value,
-          borderColor: colore_Pmin.value,
-          borderWidth: 2,
-          fill: false,
           xAxisID: "x2", // asse X2: segundo grafico
           yAxisID: "y3", // asse Y3: segungo grafico
         },
@@ -469,126 +487,55 @@ function generateChart(data) {
           display: true, // Habilita el título
           text: nomeGrafico,
           position: "top",
-          font: {
-            size: 16,
-            weight: "bold",
-          },
-          padding: {
-            top: 10,
-            bottom: 10,
-          },
+          font: { size: 16, weight: "bold" },
+          padding: { top: 10, bottom: 10 },
         },
       },
       scales: {
         // Gráficos 1
 
+        // Configuración del eje X
         x: {
-          // Configuración del eje X
-          type: "linear",
-          position: "bottom",
-          title: {
-            display: true,
-            text: xAxis, // Usa el valor seleccionado en AsseX1
-          },
-          min: minX_excel,
-          max: maxX_excel,
+          title: { display: true, text: xAxis },
+          ...scalesX_comun,
         },
 
+        // Configuración eje Y grafico 1
         y: {
-          // Configuración eje Y grafico 1
-
-          type: "linear", // Tipo de escala
           beginAtZero: false,
-          title: {
-            display: false,
-            text: yAxis, // Usa el valor seleccionado en AsseY1
-          },
-
-          ticks: {
-            display: false,
-          },
-
-          min: minY_excel,
-          max: maxY_excel,
+          title: { display: false, text: yAxis }, // Usa el valor seleccionado en AsseY1
+          ticks: { display: false },
         },
 
         // Gráfico 2
+
+        // Configuración del segundo eje X
         x2: {
-          // Configuración del segundo eje X
-          type: "linear",
-          //type: "logarithmic",
-          position: "bottom",
-          min: minX_excel,
-          max: maxX_excel,
-
-          title: {
-            display: false,
-            text: xAxis_grafico2,
-          },
-          ticks: {
-            display: false,
-          },
+          ...scalesX_comun,
+          type: "logarithmic",
+          title: { display: false, text: xAxis_grafico2 },
+          ticks: { display: false },
           grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
         },
 
+        // Configuración del primer eje Y del segundo gráfico
         y1: {
-          // Configuración del primer eje Y del segundo gráfico
-          type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
-          //type: "logarithmic",
+          ...scalesY_comun,
           position: "left", // Posición del eje (<-)
-          beginAtZero: false,
-          min: minY_excel,
-          max: maxY_excel,
           offset: true,
-          title: {
-            display: false,
-            text: yAxis1_grafico2,
-          },
-          ticks: {
-            display: true,
-          },
-          grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
+          title: { display: false, text: yAxis1_grafico2 },
         },
 
+        // Configuración del segundo eje Y del segundo grafico
         y2: {
-          // Configuración del segundo eje Y del segundo grafico
-
-          type: "linear",
-          //type: "logarithmic",
-          position: "right", // Posición del eje (->)
-          beginAtZero: false,
-          min: minY_excel,
-          max: maxY_excel,
-          stacked: false,
-          title: {
-            display: false,
-            text: yAxis2_grafico2,
-          },
-
-          ticks: {
-            display: true,
-          },
-
-          grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
+          ...scalesY_comun,
+          title: { display: false, text: yAxis2_grafico2 },
         },
+
+        // Configuración del segundo eje Y del segundo grafico
         y3: {
-          // Configuración del segundo eje Y del segundo grafico
-
-          type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
-          position: "right", // Posición del eje (->)
-          beginAtZero: false,
-          min: minY_excel,
-          max: maxY_excel,
-          stacked: false,
-          title: {
-            display: false,
-            text: yAxis3_grafico2,
-          },
-          ticks: {
-            display: true,
-          },
-
-          grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
+          ...scalesY_comun,
+          title: { display: false, text: yAxis3_grafico2 },
         },
       },
     },
