@@ -353,10 +353,14 @@ function generateChart(data) {
   );
 
   //min max
-  /*
-  let min = Math.min(...valoresX_grafico2);
-  let max = Math.max(...valoresX_grafico2);
-  console.log("min,max", min, max);*/
+
+  const minX_excel = Math.min(...xAxis);
+  const minY_excel = Math.min(...yAxis);
+  const maxX_excel = Math.min(...xAxis);
+  const maxY_excel = Math.min(...yAxis);
+
+  console.log("\nmin X Y Excel", "x", minX_excel, "y", minY_excel);
+  console.log("\nmax X Y Excel", "x", maxX_excel, "y", maxY_excel);
 
   const minY1 = Math.min(...valoresY1_grafico2);
   const maxY1 = Math.max(...valoresY1_grafico2);
@@ -438,7 +442,7 @@ function generateChart(data) {
           type: type_grafico1,
           showLine: true,
           label: " P.Min",
-          pointStyle: "star",
+          pointStyle: "dash",
           //data: dictY3_grafico2,
           data: dictsGrafico2.map(({ x, y3 }) => ({ x, y: y3 })),
           backgroundColor: colore_Pmin.value,
@@ -486,6 +490,8 @@ function generateChart(data) {
             display: true,
             text: xAxis, // Usa el valor seleccionado en AsseX1
           },
+          min: minX_excel,
+          max: maxX_excel,
         },
 
         y: {
@@ -501,6 +507,9 @@ function generateChart(data) {
           ticks: {
             display: false,
           },
+
+          min: minY_excel,
+          max: maxY_excel,
         },
 
         // Gráfico 2
@@ -509,6 +518,8 @@ function generateChart(data) {
           //type: "linear",
           type: "logarithmic",
           position: "bottom",
+          min: minX_excel,
+          max: maxX_excel,
 
           title: {
             display: false,
@@ -527,8 +538,8 @@ function generateChart(data) {
           type: "logarithmic",
           position: "left", // Posición del eje (<-)
           beginAtZero: false,
-          suggestedMin: minY1, // Ajuste dinámico con un pequeño margen
-          suggestedMax: maxY1,
+          min: minY_excel,
+          max: maxY_excel,
           offset: true,
           title: {
             display: false,
@@ -547,8 +558,8 @@ function generateChart(data) {
           type: "logarithmic",
           position: "right", // Posición del eje (->)
           beginAtZero: false,
-          suggestedMin: minY2,
-          suggestedMax: maxY2,
+          min: minY_excel,
+          max: maxY_excel,
           stacked: false,
           title: {
             display: false,
@@ -567,8 +578,8 @@ function generateChart(data) {
           type: "logarithmic", // Tipo de escala (puedes ajustarlo si es necesario)
           position: "right", // Posición del eje (->)
           beginAtZero: false,
-          suggestedMin: minY3,
-          suggestedMax: maxY3,
+          min: minY_excel,
+          max: maxY_excel,
           stacked: false,
           title: {
             display: false,
