@@ -377,8 +377,8 @@ function generateChart(data) {
 
   // Dimensiones Genarales Grafico
   const ctx = document.getElementById("myChart").getContext("2d");
-  /*ctx.canvas.width = 800;
-  ctx.canvas.height = 800;*/
+  ctx.canvas.width = 800;
+  ctx.canvas.height = 800;
 
   if (chartInstance) {
     chartInstance.destroy(); // Destruir el gráfico existente
