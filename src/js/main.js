@@ -359,6 +359,7 @@ function generateChart(data) {
   const maxX_excel = Math.min(...labels.map(parseFloat));
   const maxY_excel = Math.min(...values.map(parseFloat));
 
+  console.log(labels.map(parseFloat), values.map(parseFloat));
   console.log("\nmin X Y Excel", "x", minX_excel, "y", minY_excel);
   console.log("\nmax X Y Excel", "x", maxX_excel, "y", maxY_excel);
   /*
@@ -376,8 +377,8 @@ function generateChart(data) {
 
   // Dimensiones Genarales Grafico
   const ctx = document.getElementById("myChart").getContext("2d");
-  ctx.canvas.width = 600;
-  ctx.canvas.height = 600;
+  /*ctx.canvas.width = 800;
+  ctx.canvas.height = 800;*/
 
   if (chartInstance) {
     chartInstance.destroy(); // Destruir el gráfico existente
@@ -404,8 +405,8 @@ function generateChart(data) {
   };
 
   let scalesY_comun = {
-    //type: "logarithmic",
-    type: "linear",
+    type: "logarithmic",
+    //type: "linear",
     position: "right", // Posición del eje (->)
     ticks: { display: true },
     beginAtZero: false,
