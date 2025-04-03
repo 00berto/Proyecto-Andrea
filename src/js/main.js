@@ -354,14 +354,14 @@ function generateChart(data) {
 
   //min max
 
-  const minX_excel = Math.min(...xAxis);
-  const minY_excel = Math.min(...yAxis);
-  const maxX_excel = Math.min(...xAxis);
-  const maxY_excel = Math.min(...yAxis);
+  const minX_excel = Math.min(...labels);
+  const minY_excel = Math.min(...values);
+  const maxX_excel = Math.min(...labels);
+  const maxY_excel = Math.min(...values);
 
   console.log("\nmin X Y Excel", "x", minX_excel, "y", minY_excel);
   console.log("\nmax X Y Excel", "x", maxX_excel, "y", maxY_excel);
-
+  /*
   const minY1 = Math.min(...valoresY1_grafico2);
   const maxY1 = Math.max(...valoresY1_grafico2);
 
@@ -369,7 +369,7 @@ function generateChart(data) {
   const maxY2 = Math.max(...valoresY2_grafico2);
 
   const minY3 = Math.min(...valoresY3_grafico2);
-  const maxY3 = Math.max(...valoresY3_grafico2);
+  const maxY3 = Math.max(...valoresY3_grafico2);*/
 
   // Nombre General del gráfico
   const nomeGrafico = document.getElementById("nomeGrafico").value;
@@ -515,8 +515,8 @@ function generateChart(data) {
         // Gráfico 2
         x2: {
           // Configuración del segundo eje X
-          //type: "linear",
-          type: "logarithmic",
+          type: "linear",
+          //type: "logarithmic",
           position: "bottom",
           min: minX_excel,
           max: maxX_excel,
@@ -533,9 +533,8 @@ function generateChart(data) {
 
         y1: {
           // Configuración del primer eje Y del segundo gráfico
-
-          //type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
-          type: "logarithmic",
+          type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
+          //type: "logarithmic",
           position: "left", // Posición del eje (<-)
           beginAtZero: false,
           min: minY_excel,
@@ -554,8 +553,8 @@ function generateChart(data) {
         y2: {
           // Configuración del segundo eje Y del segundo grafico
 
-          //type: "linear",
-          type: "logarithmic",
+          type: "linear",
+          //type: "logarithmic",
           position: "right", // Posición del eje (->)
           beginAtZero: false,
           min: minY_excel,
@@ -575,7 +574,7 @@ function generateChart(data) {
         y3: {
           // Configuración del segundo eje Y del segundo grafico
 
-          type: "logarithmic", // Tipo de escala (puedes ajustarlo si es necesario)
+          type: "linear", // Tipo de escala (puedes ajustarlo si es necesario)
           position: "right", // Posición del eje (->)
           beginAtZero: false,
           min: minY_excel,
