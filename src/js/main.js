@@ -32,8 +32,11 @@ archivoXLSL.addEventListener("change", () => {
   }, 500);
 });
 
-// Manejar el cambio de selección y la visualización de los datos
+// Funcion para generar el grafico
+import { generateChart } from "./grafico.js";
+import { obtenerDatos } from "./tabla.js";
 
+// Manejar el cambio de selección y la visualización de los datos
 let sheetData = {};
 
 // Evento para leer el archivo Excel al seleccionarlo
@@ -96,7 +99,21 @@ archivoXLSL.addEventListener("change", function (event) {
 
     invio.addEventListener("click", function () {
       sheetData = getSheetData();
-      generateChart(sheetData.jsonData);
+      //generateChart(sheetData.jsonData);
+      const tablaXY2 = document.getElementById("tableXY2");
+      const datosTabla = obtenerDatos(tablaXY2);
+      generateChart(
+        sheetData.jsonData,
+        AsseX1,
+        AsseY1,
+        configuracion_Grafico2,
+        colore,
+        colore_cop,
+        colore_Pmax,
+        colore_Pmin,
+        chartInstance,
+        datosTabla
+      );
     });
   };
 
@@ -192,26 +209,6 @@ actualizar_Titulo_Grafico();
 
 // Cambio titulo en tiempo real
 nome_Grafico_Input.addEventListener("input", actualizar_Titulo_Grafico);
-
-// Funcion para generar el grafico
-import { generateChart } from "./grafico.js";
-import { obtenerDatos } from "./tabla.js";
-
-invio.addEventListener("click", function () {
-  const tablaXY2 = document.getElementById("tableXY2");
-  const datosTabla = obtenerDatos(tablaXY2);
-  generateChart(
-    AsseX1,
-    AsseY1,
-    configuracion_Grafico2,
-    colore,
-    colore_cop,
-    colore_Pmax,
-    colore_Pmin,
-    chartInstance,
-    datosTabla
-  );
-});
 
 colore.addEventListener("change", UpdateColor);
 colore_cop.addEventListener("change", UpdateColor);
