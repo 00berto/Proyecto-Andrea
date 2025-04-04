@@ -32,6 +32,10 @@ archivoXLSL.addEventListener("change", () => {
   }, 500);
 });
 
+// Manejar el cambio de selección y la visualización de los datos
+
+let sheetData = {};
+
 // Evento para leer el archivo Excel al seleccionarlo
 archivoXLSL.addEventListener("change", function (event) {
   const file = event.target.files[0];
@@ -53,10 +57,6 @@ archivoXLSL.addEventListener("change", function (event) {
       option.textContent = sheetName;
       selectHoja.appendChild(option);
     });
-
-    // Manejar el cambio de selección y la visualización de los datos
-
-    let sheetData = {};
 
     // Función para obtener los datos de la hoja
     function getSheetData() {
@@ -198,7 +198,6 @@ import { generateChart } from "./grafico.js";
 import { obtenerDatos } from "./tabla.js";
 
 invio.addEventListener("click", function () {
-  //sheetData = getSheetData();
   const tablaXY2 = document.getElementById("tableXY2");
   const datosTabla = obtenerDatos(tablaXY2);
   generateChart(
