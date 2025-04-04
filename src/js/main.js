@@ -198,7 +198,7 @@ import { generateChart } from "./grafico.js";
 import { obtenerDatos } from "./tabla.js";
 
 invio.addEventListener("click", function () {
-  sheetData = getSheetData();
+  //sheetData = getSheetData();
   const tablaXY2 = document.getElementById("tableXY2");
   const datosTabla = obtenerDatos(tablaXY2);
   generateChart(
