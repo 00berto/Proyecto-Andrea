@@ -36,14 +36,6 @@ archivoXLSL.addEventListener("change", () => {
 
 let sheetData = {};
 
-// Función para obtener los datos de la hoja
-function getSheetData() {
-  const selectedSheet = selectHoja.value;
-  const sheet = excel.Sheets[selectedSheet];
-  const jsonData = XLSX.utils.sheet_to_json(sheet, { raw: false });
-  return { selectedSheet, sheet, jsonData };
-}
-
 // Evento para leer el archivo Excel al seleccionarlo
 archivoXLSL.addEventListener("change", function (event) {
   const file = event.target.files[0];
@@ -65,6 +57,14 @@ archivoXLSL.addEventListener("change", function (event) {
       option.textContent = sheetName;
       selectHoja.appendChild(option);
     });
+
+    // Función para obtener los datos de la hoja
+    function getSheetData() {
+      const selectedSheet = selectHoja.value;
+      const sheet = excel.Sheets[selectedSheet];
+      const jsonData = XLSX.utils.sheet_to_json(sheet, { raw: false });
+      return { selectedSheet, sheet, jsonData };
+    }
 
     visual.addEventListener("click", function () {
       sheetData = getSheetData();
@@ -198,11 +198,9 @@ import { generateChart } from "./grafico.js";
 import { obtenerDatos } from "./tabla.js";
 
 invio.addEventListener("click", function () {
-  sheetData = getSheetData();
   const tablaXY2 = document.getElementById("tableXY2");
   const datosTabla = obtenerDatos(tablaXY2);
   generateChart(
-    sheetData.jsonData,
     AsseX1,
     AsseY1,
     configuracion_Grafico2,
