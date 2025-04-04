@@ -1,4 +1,4 @@
-function agregarFila() {
+export function agregarFila() {
   let tabla = document
     .getElementById("tableXY2")
     .getElementsByTagName("tbody")[0];
@@ -17,7 +17,7 @@ function agregarFila() {
   // Celda de botón eliminar
   let celdaAccion = document.createElement("td");
   let botonEliminar = document.createElement("button");
-  botonEliminar.className = "btn btn-danger btn-sm";
+  botonEliminar.className = "btn btn-danger btn-sm btn-remove-fila";
   botonEliminar.innerText = "❌";
   botonEliminar.onclick = function () {
     eliminarFila(this);
@@ -29,12 +29,12 @@ function agregarFila() {
   tabla.appendChild(nuevaFila);
 }
 
-function eliminarFila(boton) {
+export function eliminarFila(boton) {
   let fila = boton.parentNode.parentNode;
-  fila.parentNode.removeChild(fila);
+  fila.remove();
 }
 
-function obtenerDatos() {
+export function obtenerDatos() {
   let tabla = document.getElementById("tableXY2");
   let datos = [];
 
@@ -45,7 +45,8 @@ function obtenerDatos() {
     for (let j = 0; j < fila.cells.length - 1; j++) {
       let input = fila.cells[j].querySelector("input");
       if (input) {
-        filaDatos.push(parseFloat(input.value) || 0);
+        let valor = input.value.trim() !== "" ? parseFloat(input.value) : null;
+        filaDatos.push(valor);
       }
     }
     datos.push(filaDatos);
@@ -53,74 +54,3 @@ function obtenerDatos() {
 
   return datos;
 }
-
-/*
-//Posible implementación de pegar datos en la tabla
-
-document.addEventListener("paste", function (event) {
-  let clipboardData = event.clipboardData || window.clipboardData;
-  let pastedData = clipboardData.getData("Text");
-
-  // Convertir datos pegados en filas y columnas (separadas por tabulaciones y saltos de línea)
-  let filas = pastedData.split("\n").map((row) => row.split("\t"));
-
-  // Obtener tbody de la tabla
-  let tabla = document
-    .getElementById("tableXY2")
-    .getElementsByTagName("tbody")[0];
-  let filasTabla = tabla.getElementsByTagName("tr");
-
-  // Si no hay suficientes filas, agregamos más
-  while (filas.length > filasTabla.length) {
-    agregarFila();
-    filasTabla = tabla.getElementsByTagName("tr");
-  }
-
-  // Rellenar la tabla con los datos pegados
-  for (let i = 0; i < filas.length; i++) {
-    if (i >= filasTabla.length) break;
-
-    let celdas = filasTabla[i].getElementsByTagName("td");
-    for (let j = 0; j < filas[i].length; j++) {
-      if (j >= celdas.length - 1) break; // -1 para no tocar la celda de acciones
-
-      let input = celdas[j].querySelector("input");
-      if (input) {
-        input.value = filas[i][j]; // Asigna el valor pegado al input
-      }
-    }
-  }
-});
-*/
-
-window.onload = function () {
-  let columnas = [
-    "T. est. [°C]",
-    "COP",
-    "T. man [°C]",
-    "Pot. Max [W]",
-    "Pot. Min [W]",
-  ];
-  let selectX = document.getElementById("asseX2");
-  let selectY = document.getElementById("asseY2");
-
-  columnas.forEach((col, index) => {
-    selectX.add(new Option(col, index));
-    selectY.add(new Option(col, index));
-  });
-
-  selectX.selectedIndex = 0; // Por defecto, T. est. [°C]
-  selectY.selectedIndex = 1; // Por defecto, COP
-  function dispatchUpdateEvent() {
-    let event = new CustomEvent("actualizarSeleccion", {
-      detail: {
-        x: selectX.value,
-        y: selectY.value,
-      },
-    });
-    document.dispatchEvent(event);
-  }
-
-  selectX.addEventListener("change", dispatchUpdateEvent);
-  selectY.addEventListener("change", dispatchUpdateEvent);
-};
