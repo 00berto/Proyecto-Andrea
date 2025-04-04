@@ -34,8 +34,8 @@ export function eliminarFila(boton) {
   fila.remove();
 }
 
-export function obtenerDatos() {
-  let tabla = document.getElementById("tableXY2");
+export function obtenerDatos(tabla) {
+  //let tabla = document.getElementById("tableXY2");
   let datos = [];
 
   for (let i = 2; i < tabla.rows.length; i++) {

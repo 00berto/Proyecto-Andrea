@@ -195,6 +195,25 @@ nome_Grafico_Input.addEventListener("input", actualizar_Titulo_Grafico);
 
 // Funcion para generar el grafico
 import { generateChart } from "./grafico.js";
+import { obtenerDatos } from "./tabla.js";
+
+invio.addEventListener("click", function () {
+  sheetData = getSheetData();
+  const tablaXY2 = document.getElementById("tableXY2");
+  const datosTabla = obtenerDatos(tablaXY2);
+  generateChart(
+    sheetData.jsonData,
+    AsseX1,
+    AsseY1,
+    configuracion_Grafico2,
+    colore,
+    colore_cop,
+    colore_Pmax,
+    colore_Pmin,
+    chartInstance,
+    datosTabla
+  );
+});
 
 colore.addEventListener("change", UpdateColor);
 colore_cop.addEventListener("change", UpdateColor);

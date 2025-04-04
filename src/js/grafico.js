@@ -9,7 +9,8 @@ export function generateChart(
   colore_cop,
   colore_Pmax,
   colore_Pmin,
-  chartInstance
+  chartInstance,
+  datosTabla
 ) {
   //Gráfico 1
   const xAxis = AsseX1.value;
