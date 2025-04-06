@@ -354,23 +354,35 @@ function generateChart(data) {
 
   //min max
 
-  const minX_excel = Math.min(...labels.map(parseFloat));
-  const minY_excel = Math.min(...values.map(parseFloat));
-  const maxX_excel = Math.min(...labels.map(parseFloat));
-  const maxY_excel = Math.min(...values.map(parseFloat));
+  function MinMax(labels, values) {
+    let xlabels = labels.map(parseFloat).filter((val) => !isNaN(val));
+    let yvalues = values.map(parseFloat).filter((val) => !isNaN(val));
 
-  console.log(...labels.map(parseFloat), ...values.map(parseFloat));
-  console.log("\nmin X Y Excel", "x", minX_excel, "y", minY_excel);
-  console.log("\nmax X Y Excel", "x", maxX_excel, "y", maxY_excel);
-  /*
-  const minY1 = Math.min(...valoresY1_grafico2);
-  const maxY1 = Math.max(...valoresY1_grafico2);
+    let minX_excel = xlabels.length > 0 ? Math.min(...xlabels) : null;
+    let maxX_excel = xlabels.length > 0 ? Math.max(...xlabels) : null;
+    let minY_excel = yvalues.length > 0 ? Math.min(...yvalues) : null;
+    let maxY_excel = yvalues.length > 0 ? Math.max(...yvalues) : null;
 
-  const minY2 = Math.min(...valoresY2_grafico2);
-  const maxY2 = Math.max(...valoresY2_grafico2);
+    return { minX_excel, maxX_excel, minY_excel, maxY_excel };
+  }
 
-  const minY3 = Math.min(...valoresY3_grafico2);
-  const maxY3 = Math.max(...valoresY3_grafico2);*/
+  let Min_Max = MinMax(labels, values);
+
+  console.log(...labels.map(parseFloat), "\n\n", ...values.map(parseFloat));
+  console.log(
+    "\nmin X Y Excel",
+    "x",
+    Min_Max.minX_excel,
+    "y",
+    Min_Max.minY_excel
+  );
+  console.log(
+    "\nmax X Y Excel",
+    "x",
+    Min_Max.maxX_excel,
+    "y",
+    Min_Max.maxY_excel
+  );
 
   // Nombre General del gráfico
   const nomeGrafico = document.getElementById("nomeGrafico").value;
@@ -396,8 +408,8 @@ function generateChart(data) {
   };
 
   let scalesX_comun = {
-    min: minX_excel,
-    max: maxX_excel,
+    min: Min_Max.minX_excel,
+    max: Min_Max.maxX_excel,
     type: "linear",
     position: "bottom",
   };
@@ -408,8 +420,8 @@ function generateChart(data) {
     position: "right", // Posición del eje (->)
     ticks: { display: true },
     beginAtZero: false,
-    min: minY_excel,
-    max: maxY_excel,
+    min: Min_Max.minY_excel,
+    max: Min_Max.maxY_excel,
     stacked: false,
     grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
   };
@@ -431,7 +443,7 @@ function generateChart(data) {
           data: values,
           ...opciones_comunesAtodos,
           backgroundColor: colore.value,
-          borderColor: colore.value,      
+          borderColor: colore.value,
           xAxisID: "x", // asse X primer grafico
           yAxisID: "y", // asse Y primer grafico
         },
@@ -443,7 +455,7 @@ function generateChart(data) {
           label: " Cop",
           pointStyle: "triangle",
           backgroundColor: colore_cop.value,
-          borderColor: colore_cop.value,      
+          borderColor: colore_cop.value,
           //data: dictY1_grafico2,
           data: dictsGrafico2.map(({ x, y1 }) => ({ x, y: y1 })),
           xAxisID: "x2", // asse X2: segundo grafico
@@ -457,7 +469,7 @@ function generateChart(data) {
           label: " P.Max",
           pointStyle: "cross",
           backgroundColor: colore_Pmax.value,
-          borderColor: colore_Pmax.value,      
+          borderColor: colore_Pmax.value,
           //data: dictY2_grafico2,
           data: dictsGrafico2.map(({ x, y2 }) => ({ x, y: y2 })),
           xAxisID: "x2", // asse X2: segundo grafico
@@ -471,7 +483,7 @@ function generateChart(data) {
           label: " P.Min",
           pointStyle: "dash",
           backgroundColor: colore_Pmin.value,
-          borderColor: colore_Pmin.value,      
+          borderColor: colore_Pmin.value,
           //data: dictY3_grafico2,
           data: dictsGrafico2.map(({ x, y3 }) => ({ x, y: y3 })),
           xAxisID: "x2", // asse X2: segundo grafico
