@@ -368,7 +368,6 @@ function generateChart(data) {
 
   let Min_Max = MinMax(labels, values);
 
-  console.log(...labels.map(parseFloat), "\n\n", ...values.map(parseFloat));
   console.log(
     "\nmin X Y Excel",
     "x",
@@ -415,9 +414,9 @@ function generateChart(data) {
   };
 
   let scalesY_comun = {
-    type: "logarithmic",
-    //type: "linear",
-    position: "right", // Posición del eje (->)
+    //type: "logarithmic",
+    type: "linear",
+    position: "left", // Posición del eje (->)
     ticks: { display: true },
     beginAtZero: false,
     min: Min_Max.minY_excel,
