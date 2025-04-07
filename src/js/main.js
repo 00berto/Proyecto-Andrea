@@ -460,8 +460,6 @@ function generateChart(data) {
         {
           ...y_comun,
           ...opciones_comunesAtodos,
-          min: min_max.escala_minYcop_AN,
-          max: min_max.escala_maxYcop_AN,
           label: " Cop",
           pointStyle: "triangle",
           backgroundColor: colore_cop.value,
@@ -478,8 +476,6 @@ function generateChart(data) {
           ...opciones_comunesAtodos,
           label: " P.Max",
           pointStyle: "cross",
-          min: min_max.escala_minY_AN,
-          max: min_max.escala_maxY_AN,
           backgroundColor: colore_Pmax.value,
           borderColor: colore_Pmax.value,
           //data: dictY2_grafico2,
@@ -494,8 +490,6 @@ function generateChart(data) {
           ...opciones_comunesAtodos,
           label: " P.Min",
           pointStyle: "dash",
-          min: min_max.escala_minY_AN,
-          max: min_max.escala_maxY_AN,
           backgroundColor: colore_Pmin.value,
           borderColor: colore_Pmin.value,
           //data: dictY3_grafico2,
@@ -553,22 +547,31 @@ function generateChart(data) {
 
         // Configuración del primer eje Y del segundo gráfico
         y1: {
-          ...scalesY_comun,
+          //...scalesY_comun,
+          min: min_max.escala_minYcop_AN,
+          max: min_max.escala_maxYcop_AN,
           position: "left", // Posición del eje (<-)
           offset: true,
           title: { display: false, text: yAxis1_grafico2 },
+          beginAtZero: false,
         },
 
         // Configuración del segundo eje Y del segundo grafico
         y2: {
-          ...scalesY_comun,
+          //...scalesY_comun,
+          min: min_max.escala_minY_AN,
+          max: min_max.escala_maxY_AN,
           title: { display: false, text: yAxis2_grafico2 },
+          beginAtZero: false,
         },
 
         // Configuración del segundo eje Y del segundo grafico
         y3: {
-          ...scalesY_comun,
+          //...scalesY_comun,
+          min: min_max.escala_minY_AN,
+          max: min_max.escala_maxY_AN,
           title: { display: false, text: yAxis3_grafico2 },
+          beginAtZero: false,
         },
       },
     },
