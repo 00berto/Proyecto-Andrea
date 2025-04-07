@@ -363,10 +363,21 @@ function generateChart(data) {
     let minY_excel = yvalues.length > 0 ? Math.min(...yvalues) : null;
     let maxY_excel = yvalues.length > 0 ? Math.max(...yvalues) : null;
 
-    return { minX_excel, maxX_excel, minY_excel, maxY_excel };
+    return { minX_excel, maxX_excel, minY_excel, maxY_excel, maxY_pmax };
   }
 
   let Min_Max = MinMax(labels, values);
+
+  const min_max = {
+    escala_minX_AN: -10,
+    escala_maxX_AN: 40,
+
+    escala_minY_AN: -4000,
+    escala_maxY_AN: 8000,
+
+    escala_minYcop_AN: 0,
+    escala_maxYcop_AN: 5,
+  };
 
   console.log(
     "\nmin X Y Excel",
@@ -407,8 +418,8 @@ function generateChart(data) {
   };
 
   let scalesX_comun = {
-    min: Min_Max.minX_excel,
-    max: Min_Max.maxX_excel,
+    min: min_max.escala_minX_AN,
+    max: min_max.escala_maxX_AN,
     type: "linear",
     position: "bottom",
   };
@@ -419,8 +430,6 @@ function generateChart(data) {
     position: "left", // Posición del eje (->)
     ticks: { display: true },
     beginAtZero: false,
-    min: Min_Max.minY_excel,
-    max: Min_Max.maxY_excel,
     stacked: false,
     grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
   };
@@ -451,6 +460,8 @@ function generateChart(data) {
         {
           ...y_comun,
           ...opciones_comunesAtodos,
+          min: min_max.escala_minYcop_AN,
+          max: min_max.escala_maxYcop_AN,
           label: " Cop",
           pointStyle: "triangle",
           backgroundColor: colore_cop.value,
@@ -467,6 +478,8 @@ function generateChart(data) {
           ...opciones_comunesAtodos,
           label: " P.Max",
           pointStyle: "cross",
+          min: min_max.escala_minY_AN,
+          max: min_max.escala_maxY_AN,
           backgroundColor: colore_Pmax.value,
           borderColor: colore_Pmax.value,
           //data: dictY2_grafico2,
@@ -481,6 +494,8 @@ function generateChart(data) {
           ...opciones_comunesAtodos,
           label: " P.Min",
           pointStyle: "dash",
+          min: min_max.escala_minY_AN,
+          max: min_max.escala_maxY_AN,
           backgroundColor: colore_Pmin.value,
           borderColor: colore_Pmin.value,
           //data: dictY3_grafico2,
