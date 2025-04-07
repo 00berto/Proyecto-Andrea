@@ -539,7 +539,7 @@ function generateChart(data) {
         // Configuración del segundo eje X
         x2: {
           ...scalesX_comun,
-          type: "logarithmic",
+          //type: "logarithmic",
           title: { display: false, text: xAxis_grafico2 },
           ticks: { display: false },
           grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
