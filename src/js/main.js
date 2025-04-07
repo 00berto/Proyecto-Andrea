@@ -363,7 +363,7 @@ function generateChart(data) {
     let minY_excel = yvalues.length > 0 ? Math.min(...yvalues) : null;
     let maxY_excel = yvalues.length > 0 ? Math.max(...yvalues) : null;
 
-    return { minX_excel, maxX_excel, minY_excel, maxY_excel, maxY_pmax };
+    return { minX_excel, maxX_excel, minY_excel, maxY_excel };
   }
 
   let Min_Max = MinMax(labels, values);
