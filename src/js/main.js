@@ -543,6 +543,7 @@ function generateChart(data) {
           title: { display: false, text: xAxis_grafico2 },
           ticks: { display: false },
           grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
+          position: "center",
         },
 
         // Configuración del primer eje Y del segundo gráfico
