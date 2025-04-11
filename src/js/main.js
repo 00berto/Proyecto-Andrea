@@ -421,7 +421,7 @@ function generateChart(data) {
     min: min_max.escala_minX_AN,
     max: min_max.escala_maxX_AN,
     type: "linear",
-    position: "bottom",
+    position: "center",
   };
 
   let scalesY_comun = {
@@ -523,7 +523,7 @@ function generateChart(data) {
 
         // Configuración del eje X
         x: {
-          title: { display: true, text: xAxis },
+          title: { display: false, text: xAxis },
           ...scalesX_comun,
         },
 
@@ -543,7 +543,6 @@ function generateChart(data) {
           title: { display: false, text: xAxis_grafico2 },
           ticks: { display: false },
           grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
-          position: "center",
         },
 
         // Configuración del primer eje Y del segundo gráfico
@@ -551,7 +550,7 @@ function generateChart(data) {
           //...scalesY_comun,
           min: min_max.escala_minYcop_AN,
           max: min_max.escala_maxYcop_AN,
-          position: "left", // Posición del eje (<-)
+          position: "right", // Posición del eje (->)
           offset: true,
           title: { display: false, text: yAxis1_grafico2 },
           beginAtZero: false,
@@ -563,6 +562,7 @@ function generateChart(data) {
           min: min_max.escala_minY_AN,
           max: min_max.escala_maxY_AN,
           title: { display: false, text: yAxis2_grafico2 },
+          ticks: { display: false },
           beginAtZero: false,
         },
 
@@ -572,6 +572,7 @@ function generateChart(data) {
           min: min_max.escala_minY_AN,
           max: min_max.escala_maxY_AN,
           title: { display: false, text: yAxis3_grafico2 },
+          ticks: { display: false },
           beginAtZero: false,
         },
       },
