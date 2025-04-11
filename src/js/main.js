@@ -439,6 +439,14 @@ function generateChart(data) {
     showLine: true,
   };
 
+  let scaleY2_3comun = {
+    min: min_max.escala_minY_AN,
+    max: min_max.escala_maxY_AN,
+    ticks: { display: false },
+    grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
+    beginAtZero: false,
+  };
+
   // Crear el gráfico
   chartInstance = new Chart(ctx, {
     type: type_grafico1,
@@ -531,7 +539,7 @@ function generateChart(data) {
         y: {
           beginAtZero: false,
           title: { display: false, text: yAxis }, // Usa el valor seleccionado en AsseY1
-          ticks: { display: false },
+          ticks: { display: true },
         },
 
         // Gráfico 2
@@ -554,26 +562,21 @@ function generateChart(data) {
           offset: true,
           title: { display: false, text: yAxis1_grafico2 },
           beginAtZero: false,
+          grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
         },
 
         // Configuración del segundo eje Y del segundo grafico
         y2: {
           //...scalesY_comun,
-          min: min_max.escala_minY_AN,
-          max: min_max.escala_maxY_AN,
           title: { display: false, text: yAxis2_grafico2 },
-          ticks: { display: false },
-          beginAtZero: false,
+          ...scaleY2_3comun,
         },
 
         // Configuración del segundo eje Y del segundo grafico
         y3: {
           //...scalesY_comun,
-          min: min_max.escala_minY_AN,
-          max: min_max.escala_maxY_AN,
           title: { display: false, text: yAxis3_grafico2 },
-          ticks: { display: false },
-          beginAtZero: false,
+          ...scaleY2_3comun,
         },
       },
     },
