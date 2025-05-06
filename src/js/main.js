@@ -416,7 +416,7 @@ function generateChart(data) {
   // opiciones comunes Grafico
 
   let opciones_comunesAtodos = {
-    borderWidth: 2,
+    borderWidth: 1, //2
     fill: false,
   };
 
