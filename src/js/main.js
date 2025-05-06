@@ -372,8 +372,8 @@ function generateChart(data) {
     escala_minX_AN: -10,
     escala_maxX_AN: 40,
 
-    escala_minY_AN: -4000,
-    escala_maxY_AN: 8000,
+    escala_minY_AN: -3000, //-4000
+    escala_maxY_AN: 7000, //8000
 
     escala_minYcop_AN: 0,
     escala_maxYcop_AN: 5,
@@ -402,8 +402,8 @@ function generateChart(data) {
 
   // Dimensiones Genarales Grafico
   const ctx = document.getElementById("myChart").getContext("2d");
-  ctx.canvas.width = 800;
-  ctx.canvas.height = 800;
+  ctx.canvas.width = 600; //800
+  ctx.canvas.height = 600; //800
 
   if (chartInstance) {
     chartInstance.destroy(); // Destruir el gráfico existente
