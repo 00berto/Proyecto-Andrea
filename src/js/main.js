@@ -377,6 +377,9 @@ function generateChart(data) {
 
     escala_minYcop_AN: 0,
     escala_maxYcop_AN: 5,
+
+    escala_minX_grafico: -10,
+    escala_maxX_grafico: 25,
   };
 
   console.log(
@@ -540,6 +543,7 @@ function generateChart(data) {
           beginAtZero: false,
           title: { display: false, text: yAxis }, // Usa el valor seleccionado en AsseY1
           ticks: { display: true },
+          ...scaleY2_3comun,
         },
 
         // Gráfico 2
