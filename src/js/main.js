@@ -365,13 +365,6 @@ function generateChart(data) {
     let minY_excel = yvalues.length > 0 ? Math.min(...yvalues) : null;
     let maxY_excel = yvalues.length > 0 ? Math.max(...yvalues) : null;
 
-    let minY_dispersión = Math.min(
-      ...values.filter((val) => typeof val === "number")
-    );
-    let maxY_dispersión = Math.max(
-      ...values.filter((val) => typeof val === "number")
-    );
-
     return { minX_excel, maxX_excel, minY_excel, maxY_excel };
   }
 
@@ -381,14 +374,14 @@ function generateChart(data) {
     escala_minX_AN: -10,
     escala_maxX_AN: 40,
 
-    escala_minY_AN: -3500, //-4000
+    escala_minY_AN: -3000, //-4000
     escala_maxY_AN: 7000, //8000
 
     escala_minYcop_AN: 0,
     escala_maxYcop_AN: 5,
 
-    escala_minX_graficoDISP: MinMax.minY_dispersión,
-    escala_maxX_graficoDISP: MinMax.maxY_dispersión,
+    escala_minX_grafico: -10,
+    escala_maxX_grafico: 25,
   };
 
   console.log(
@@ -425,7 +418,7 @@ function generateChart(data) {
   // opiciones comunes Grafico
 
   let opciones_comunesAtodos = {
-    borderWidth: 2,
+    borderWidth: 1, //2
     fill: false,
   };
 
@@ -449,7 +442,6 @@ function generateChart(data) {
   let y_comun = {
     type: type_grafico1,
     showLine: true,
-    orden: 3,
   };
 
   let scaleY2_3comun = {
@@ -475,7 +467,6 @@ function generateChart(data) {
           borderColor: colore.value,
           xAxisID: "x", // asse X primer grafico
           yAxisID: "y", // asse Y primer grafico
-          order: 1,
         },
 
         //Gráfico 2 (y1)
