@@ -425,7 +425,7 @@ function generateChart(data) {
   // opiciones comunes Grafico
 
   let opciones_comunesAtodos = {
-    borderWidth: 1, //2
+    borderWidth: 2,
     fill: false,
   };
 
@@ -453,10 +453,8 @@ function generateChart(data) {
   };
 
   let scaleY2_3comun = {
-    min: min_max.escala_minX_graficoDISP - 20,
-    max: min_max.escala_maxX_graficoDISP + 20,
-    // min: min_max.escala_minY_AN,
-    // max: min_max.escala_maxY_AN,
+    min: min_max.escala_minY_AN,
+    max: min_max.escala_maxY_AN,
     ticks: { display: false },
     grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
     beginAtZero: false,
@@ -568,6 +566,9 @@ function generateChart(data) {
           title: { display: false, text: xAxis_grafico2 },
           ticks: { display: false },
           grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
+
+          min: min_max.escala_minX_graficoDISP - 20,
+          max: min_max.escala_maxX_graficoDISP + 20,
         },
 
         // Configuración del primer eje Y del segundo gráfico
