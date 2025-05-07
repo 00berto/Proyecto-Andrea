@@ -381,7 +381,7 @@ function generateChart(data) {
     escala_minX_AN: -10,
     escala_maxX_AN: 40,
 
-    escala_minY_AN: -3000, //-4000
+    escala_minY_AN: -3500, //-4000
     escala_maxY_AN: 7000, //8000
 
     escala_minYcop_AN: 0,
@@ -555,9 +555,6 @@ function generateChart(data) {
           title: { display: false, text: yAxis }, // Usa el valor seleccionado en AsseY1
           ticks: { display: true },
           ...scaleY2_3comun,
-
-          min: min_max.escala_minX_graficoDISP - 20,
-          max: min_max.escala_maxX_graficoDISP + 20,
         },
 
         // Gráfico 2
