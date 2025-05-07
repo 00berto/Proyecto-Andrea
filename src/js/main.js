@@ -252,6 +252,8 @@ const colore_cop = document.getElementById("colore_cop");
 const colore_Pmax = document.getElementById("colore_Pmin");
 const colore_Pmin = document.getElementById("colore_Pmax");
 
+//GRAFICO
+
 let chartInstance; // almacen del grafico
 
 function UpdateColor() {
@@ -363,6 +365,13 @@ function generateChart(data) {
     let minY_excel = yvalues.length > 0 ? Math.min(...yvalues) : null;
     let maxY_excel = yvalues.length > 0 ? Math.max(...yvalues) : null;
 
+    let minY_dispersión = Math.min(
+      ...values.filter((val) => typeof val === "number")
+    );
+    let maxY_dispersión = Math.max(
+      ...values.filter((val) => typeof val === "number")
+    );
+
     return { minX_excel, maxX_excel, minY_excel, maxY_excel };
   }
 
@@ -378,8 +387,8 @@ function generateChart(data) {
     escala_minYcop_AN: 0,
     escala_maxYcop_AN: 5,
 
-    escala_minX_grafico: -10,
-    escala_maxX_grafico: 25,
+    escala_minX_graficoDISP: MinMax.minY_dispersión,
+    escala_maxX_graficoDISP: MinMax.maxY_dispersión,
   };
 
   console.log(
@@ -440,11 +449,14 @@ function generateChart(data) {
   let y_comun = {
     type: type_grafico1,
     showLine: true,
+    orden: 3,
   };
 
   let scaleY2_3comun = {
-    min: min_max.escala_minY_AN,
-    max: min_max.escala_maxY_AN,
+    min: min_max.escala_minX_graficoDISP - 20,
+    max: min_max.escala_maxX_graficoDISP + 20,
+    // min: min_max.escala_minY_AN,
+    // max: min_max.escala_maxY_AN,
     ticks: { display: false },
     grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
     beginAtZero: false,
@@ -465,6 +477,7 @@ function generateChart(data) {
           borderColor: colore.value,
           xAxisID: "x", // asse X primer grafico
           yAxisID: "y", // asse Y primer grafico
+          order: 1,
         },
 
         //Gráfico 2 (y1)
