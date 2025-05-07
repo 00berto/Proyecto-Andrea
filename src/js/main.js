@@ -375,7 +375,7 @@ function generateChart(data) {
     escala_maxX_AN: 40,
 
     escala_minY_AN: -3000, //-4000
-    escala_maxY_AN: 7000, //8000
+    escala_maxY_AN: 6500, //8000
 
     escala_minYcop_AN: 0,
     escala_maxYcop_AN: 5,
@@ -442,6 +442,7 @@ function generateChart(data) {
   let y_comun = {
     type: type_grafico1,
     showLine: true,
+    orden: 3,
   };
 
   let scaleY2_3comun = {
@@ -467,6 +468,7 @@ function generateChart(data) {
           borderColor: colore.value,
           xAxisID: "x", // asse X primer grafico
           yAxisID: "y", // asse Y primer grafico
+          orden: 1,
         },
 
         //Gráfico 2 (y1)
