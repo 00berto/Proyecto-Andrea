@@ -555,6 +555,9 @@ function generateChart(data) {
           title: { display: false, text: yAxis }, // Usa el valor seleccionado en AsseY1
           ticks: { display: true },
           ...scaleY2_3comun,
+
+          min: min_max.escala_minX_graficoDISP - 20,
+          max: min_max.escala_maxX_graficoDISP + 20,
         },
 
         // Gráfico 2
@@ -566,9 +569,6 @@ function generateChart(data) {
           title: { display: false, text: xAxis_grafico2 },
           ticks: { display: false },
           grid: { drawTicks: false, drawBorder: false, drawOnChartArea: false },
-
-          min: min_max.escala_minX_graficoDISP - 20,
-          max: min_max.escala_maxX_graficoDISP + 20,
         },
 
         // Configuración del primer eje Y del segundo gráfico
